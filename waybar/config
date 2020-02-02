@@ -1,0 +1,63 @@
+{
+        "layer": "top", // Waybar at top layer
+        "height": 26, // Waybar height
+        "modules-left": ["sway/workspaces", "sway/mode"],
+        "modules-center": ["sway/window"],
+        "modules-right": ["pulseaudio", "network", "battery", "clock"],
+        "sway/workspaces": {
+            "disable-scroll": true
+        },
+        "sway/mode": {
+        "tooltip": false,
+            "format": "{}"
+        },
+        "sway/window": {
+        "tooltip": false,
+            "max-length": 96
+        },
+        "clock": {
+        "tooltip": false,
+            "format": "{:%a %-d %h %-H.%M}"
+        },
+        "cpu": {
+            "format": "{}% "
+        },
+        "memory": {
+            "format": "{}% "
+        },
+        "battery": {
+        "tooltip": false,
+            "states": {
+                "critical": 25
+            },
+            "format": "{capacity}% {icon}",
+            "format-full": "",
+            "format-icons": ["", "", "", "", ""],
+            "on-click": "/home/tb/scripts/inhibitSuspend.sh"
+        },
+        "network": {
+            "interface": "wlp1s0", // (Optional) To force the use of this interface          \uF2E7,
+            "format-wifi": "",
+            "format-disconnected": "",
+            "on-click": "notify-send -t 2000 \"Connected to $(iw dev wlan0 link | perl -lne 'print $1 if /SSID: (.*)/')\"",
+            "on-click-right": "notify-send -t 2000 \"Connected to $(iw dev wlan0 link | perl -lne 'print $1 if /SSID: (.*)/')\""
+        },
+       // \ue04f{volume}%
+        "pulseaudio": {
+        "tooltip": false,
+            "format": "{icon}",
+            "format-bluetooth": "{volume}% {icon}",
+            "format-muted": "",
+            "on-click": "/home/tb/scripts/inputSound.sh",
+            "format-alt": "{volume}% {icon}",
+            "format-icons": {
+                "headphones": "",
+                "handsfree": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["","", ""]
+            }
+        }
+}

@@ -1,10 +1,10 @@
 # I want to ignore everithing
-*
+/*
 
 # Except
 !.gitignore
-!sway/*
-!waybar/*
+!sway*
+!waybar*
 !alacritty*
-!wal/*
+!wal*
 
