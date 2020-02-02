@@ -3,8 +3,8 @@
 
 # Except
 !.gitignore
-!sway*
-!waybar*
-!alacritty*
-!wal*
+!/sway
+!/waybar
+!/alacritty
+!/wal
 

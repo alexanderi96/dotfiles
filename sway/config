@@ -26,7 +26,8 @@ bindsym $mod+Return exec $term
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# this is gmenu! https://git.sr.ht/~tslocum/gmenu?0.2.4
 set $menu gtkmenu --width 500 --height 260
 
 # Setting the wallpaper
@@ -35,6 +36,7 @@ output * bg $wallpaper fill
 # Setting the correct display resolution
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+# Surface pro display
 output eDP-1 resolution 2736x1824
 
 ### Font Configuration
