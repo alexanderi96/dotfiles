@@ -1,0 +1,10 @@
+# I want to ignore everithing
+*
+
+# Except
+!.gitignore
+!sway/*
+!waybar/*
+!alacritty*
+!wal/*
+
