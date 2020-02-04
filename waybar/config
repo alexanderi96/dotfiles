@@ -1,9 +1,9 @@
-{
+[{
         "layer": "top", // Waybar at top layer
         "height": 26, // Waybar height
         "modules-left": ["sway/workspaces", "sway/mode"],
         "modules-center": ["sway/window"],
-        "modules-right": ["pulseaudio", "network", "battery", "clock"],
+        "modules-right": ["clock"],
         "sway/workspaces": {
             "disable-scroll": true
         },
@@ -15,6 +15,17 @@
         "tooltip": false,
             "max-length": 96
         },
+        "clock": {
+        "tooltip": false,
+            "format": "{:%a %-d %h %-H.%M}"
+        }
+},
+{
+        "position": "bottom", // Waybar at top layer
+        "height": 26, // Waybar height
+        "modules-left": ["memory", "cpu"],
+        "modules-center": ["network"],
+        "modules-right": ["pulseaudio", "battery"],
         "clock": {
         "tooltip": false,
             "format": "{:%a %-d %h %-H.%M}"
@@ -36,20 +47,21 @@
             "on-click": "/home/tb/scripts/inhibitSuspend.sh"
         },
         "network": {
-            "interface": "wlp1s0", // (Optional) To force the use of this interface          \uF2E7,
-            "format-wifi": "",
+            "interface": "wlp0s20f3",
+            "format-wifi": "{essid} ({signalStrength}%) ",
             "format-disconnected": "",
-            "on-click": "notify-send -t 2000 \"Connected to $(iw dev wlan0 link | perl -lne 'print $1 if /SSID: (.*)/')\"",
-            "on-click-right": "notify-send -t 2000 \"Connected to $(iw dev wlan0 link | perl -lne 'print $1 if /SSID: (.*)/')\""
+        "on-click": "nm-connection-editor"
         },
        // \ue04f{volume}%
         "pulseaudio": {
         "tooltip": false,
-            "format": "{icon}",
+            "format": "{volume}% {icon} {format_source}",
             "format-bluetooth": "{volume}% {icon}",
-            "format-muted": "",
+            "format-muted": "",
             "on-click": "/home/tb/scripts/inputSound.sh",
             "format-alt": "{volume}% {icon}",
+            "format-source": "{volume}% ",
+            "format-source-muted": "",
             "format-icons": {
                 "headphones": "",
                 "handsfree": "",
@@ -58,6 +70,8 @@
                 "portable": "",
                 "car": "",
                 "default": ["","", ""]
-            }
+            },
+        "scroll-step": 1,
+            "on-click": "pavucontrol"
         }
-}
+}]
