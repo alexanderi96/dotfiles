@@ -263,6 +263,7 @@ bar {
 #--- Gaps ------------------------------------------------------------------
 gaps inner 10
 gaps outer 10
+smart_gaps on
 
 #--- Borders ---------------------------------------------------------------
 default_floating_border pixel 1 #$border

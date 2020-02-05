@@ -47,7 +47,7 @@
             "on-click": "/home/tb/scripts/inhibitSuspend.sh"
         },
         "network": {
-            "interface": "wlp0s20f3",
+            "interface": "wlan0",
             "format-wifi": "{essid} ({signalStrength}%) ",
             "format-disconnected": "",
         "on-click": "nm-connection-editor"
