@@ -12,3 +12,4 @@ if [[ -r ~/development/mcfly.bash ]]; then
   source $HOME/development/mcfly.bash
 fi
 
+export PATH=$PATH:$HOME/go/bin
