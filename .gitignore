@@ -1,10 +1,17 @@
 # I want to ignore everithing
 /*
 
-# Except
+# Except the gitignore
 !.gitignore
-!/sway
-!/waybar
-!/alacritty
-!/wal
+
+# And my configuration files
+!/.config
+/.config/*
+!/.config/sway
+!/.config/waybar
+!/.config/alacritty
+!/.config/wal
+
+# I want to save my bashrc too
+!.bashrc
 
