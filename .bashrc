@@ -8,8 +8,9 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-if [[ -r ~/development/mcfly.bash ]]; then
-  source $HOME/development/mcfly.bash
+# if tou installed mcfly trough yay:
+if [[ -r /usr/share/doc/mcfly/mcfly.bash ]]; then
+  source /usr/share/doc/mcfly/mcfly.bash
 fi
 
 export PATH=$PATH:$HOME/go/bin
