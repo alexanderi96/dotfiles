@@ -3,7 +3,7 @@
         "height": 26, // Waybar height
         "modules-left": ["sway/workspaces", "sway/mode"],
         "modules-center": ["sway/window"],
-        "modules-right": ["clock"],
+        "modules-right": ["memory", "cpu", "network", "pulseaudio", "battery", "clock"],
         "sway/workspaces": {
             "disable-scroll": true
         },
@@ -16,19 +16,8 @@
             "max-length": 96
         },
         "clock": {
-        "tooltip": false,
-            "format": "{:%a %-d %h %-H.%M}"
-        }
-},
-{
-        "position": "bottom", // Waybar at top layer
-        "height": 26, // Waybar height
-        "modules-left": ["memory", "cpu"],
-        "modules-center": ["network"],
-        "modules-right": ["pulseaudio", "battery"],
-        "clock": {
-        "tooltip": false,
-            "format": "{:%a %-d %h %-H.%M}"
+        "tooltip": true,
+            "format": "{:%-H:%M}"
         },
         "cpu": {
             "format": "{}% "
@@ -48,30 +37,28 @@
         },
         "network": {
             "interface": "wlan0",
-            "format-wifi": "{essid} ({signalStrength}%) ",
+            "format-wifi": "{ipaddr} ",
             "format-disconnected": "",
-        "on-click": "nm-connection-editor"
+	    	"tooltip-format": "{ifname}",
+	    	"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+ 	    	"tooltip-format-ethernet": "{ifname} ",
+	    	"tooltip-format-disconnected": "Disconnected",
+        	"on-click": "nm-connection-editor"
         },
-       // \ue04f{volume}%
-        "pulseaudio": {
-        "tooltip": false,
-            "format": "{volume}% {icon} {format_source}",
-            "format-bluetooth": "{volume}% {icon}",
-            "format-muted": "",
-            "on-click": "/home/tb/scripts/inputSound.sh",
-            "format-alt": "{volume}% {icon}",
-            "format-source": "{volume}% ",
-            "format-source-muted": "",
-            "format-icons": {
-                "headphones": "",
-                "handsfree": "",
-                "headset": "",
-                "phone": "",
-                "portable": "",
-                "car": "",
-                "default": ["","", ""]
-            },
-        "scroll-step": 1,
-            "on-click": "pavucontrol"
-        }
+       "pulseaudio": {
+           "format": "{volume}% {icon}",
+           "format-bluetooth": "{volume}% {icon}",
+           "format-muted": "",
+           "format-icons": {
+               "headphone": "",
+               "hands-free": "",
+               "headset": "",
+               "phone": "",
+               "portable": "",
+               "car": "",
+               "default": ["", ""]
+           },
+           "scroll-step": 1,
+           "on-click": "pavucontrol"
+       }
 }]
