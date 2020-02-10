@@ -12,7 +12,7 @@
 !/.config/alacritty
 !/.config/wal
 
-# I want to save my bashrc too
-!.bashrc
-!.bash_profile
+# I want to save my zshrc too
+!.zshrc
+!.profile
 
