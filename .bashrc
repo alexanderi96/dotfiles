@@ -12,5 +12,3 @@ PS1='[\u@\h \W]\$ '
 if [[ -r /usr/share/doc/mcfly/mcfly.bash ]]; then
   source /usr/share/doc/mcfly/mcfly.bash
 fi
-
-export PATH=$PATH:$HOME/go/bin

@@ -7,12 +7,11 @@
 # And my configuration files
 !/.config
 /.config/*
-!/.config/sway
-!/.config/waybar
+!picom.conf
+!/.config/i3
 !/.config/alacritty
-!/.config/wal
 
 # I want to save my bashrc too
 !.bashrc
-!.bash_profile
+!.profile
 
