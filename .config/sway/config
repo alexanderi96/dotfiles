@@ -28,10 +28,10 @@ bindsym $mod+Return exec $term
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 # this is gmenu! https://git.sr.ht/~tslocum/gmenu?0.2.4
-set $menu gtkmenu --width 500 --height 260
+set $menu bemenu-run -n
 
 # Setting the wallpaper
-output * bg $wallpaper fill
+output * bg $HOME/Pictures/Wallpapers/ganapathy-kumar-FQhYGMZ_H_4-unsplash.jpg fill
 
 # Setting up a gtk them
 set $gnome-schema org.gnome.desktop.interface
@@ -51,8 +51,11 @@ output $laptop resolution 1920x1080
 bindswitch --reload lid:on output $laptop disable
 bindswitch --reload lid:off output $laptop enable
 
+# Hdmi
+output HDMI-A-1 resolution 1920x1080
+
 # Oldtop display
-output DVI-I-1 resolution 1600x900
+#output DVI-I-1 resolution 1600x900
 
 ### Font Configuration
 # Font for window titles

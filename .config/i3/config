@@ -49,7 +49,8 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # bindsym $mod+d exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
-bindsym $mod+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns
+#bindsym $mod+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns
+bindsym $mod+d exec bemenu-run
 
 # change focus
 bindsym $mod+j focus left
