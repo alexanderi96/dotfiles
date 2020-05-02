@@ -5,9 +5,6 @@
 # First things first... let's put the italian keymap
 input * xkb_layout it
 
-### Pywal
-include "$HOME/.cache/wal/colors-sway"
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt and Mod4 for win
@@ -31,9 +28,9 @@ bindsym $mod+Return exec $term
 set $menu bemenu-run -n
 
 # Setting the wallpaper
-output * bg $HOME/Pictures/Wallpapers/ganapathy-kumar-FQhYGMZ_H_4-unsplash.jpg fill
+output * bg $HOME/Pictures/Wallpapers/121415.jpg fill
 
-# Setting up a gtk them
+# Setting up a gtk theme
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
@@ -220,8 +217,33 @@ font San Francisco Display Medium 12
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 
+    # Colors (Tender) tkx alacritty
+  # Default colors
+    set $background '#282828'
+    set $foreground '#eeeeee'
+
+  # Normal colors
+    set $color1 '#282828'
+    set $color2 '#f43753'
+    set $color3 '#c9d05c'
+    set $color4 '#ffc24b'
+    set $color5 '#b3deef'
+    set $color6 '#d3b987'
+    set $color7 '#73cef4'
+    set $color8 '#eeeeee'
+
+  # Bright colors
+    set $color9 '#4c4c4c'
+    set $color10 '#f43753'
+    set $color11 '#c9d05c'
+    set $color12 '#ffc24b'
+    set $color13 '#b3deef'
+    set $color14 '#d3b987'
+    set $color15 '#73cef4'
+    set $color16 '#feffff'
+
     #
-    # Pywal Coloring
+    # Colors!
     #
     # class                 border          background      text         indicator         child_border
     client.focused          $color2         $color2         $foreground  $color2           $color2
@@ -266,10 +288,10 @@ bar {
 #--- Gaps ------------------------------------------------------------------
 gaps inner 10
 gaps outer 10
-smart_gaps on
+smart_gaps off
 
 #--- Borders ---------------------------------------------------------------
-default_floating_border pixel 1 #$border
+default_floating_border pixel 1
 default_border          pixel  1 
 for_window [title="."] title_format "%title"
 titlebar_border_thickness 0

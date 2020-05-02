@@ -17,7 +17,7 @@
         },
         "clock": {
         "tooltip": true,
-            "format": "{:%-H:%M}"
+            "format": "{:%H:%M}"
         },
         "cpu": {
             "format": "{}% "
@@ -36,7 +36,7 @@
             "on-click": "/home/tb/scripts/inhibitSuspend.sh"
         },
         "network": {
-            "interface": "wlan0",
+            "interface": "wlp0s20f3",
             "format-wifi": "{ipaddr} ",
             "format-disconnected": "",
 	    	"tooltip-format": "{ifname}",
