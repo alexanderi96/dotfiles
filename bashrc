@@ -14,9 +14,9 @@ if [[ -r /usr/share/doc/mcfly/mcfly.bash ]]; then
 fi
 
 export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/.local/bin"
+#export PATH="$PATH:$HOME/.local/bin"
 alias la='ls -a'
 
 #ssh
-eval $(keychain --eval --quiet ~/.ssh/stego@rasbpi.key)
+#eval $(keychain --eval --quiet ~/.ssh/stego@rasbpi.key)
 
