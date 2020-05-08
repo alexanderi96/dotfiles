@@ -17,7 +17,7 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-set $term waycritty
+set $term alacritty
 bindsym $mod+Return exec $term
 
 # Your preferred application launcher
@@ -25,11 +25,10 @@ bindsym $mod+Return exec $term
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 # this is gmenu! https://git.sr.ht/~tslocum/gmenu?0.2.4
-#set $menu bemenu-run -n
-set $menu dmenu_run
+set $menu bemenu-run -n
 
 # Setting the wallpaper
-output * bg $HOME/myrepo/dotfiles/walls/walldune.jpg fill
+output * bg $HOME/Pictures/Wallpapers/121415.jpg fill
 
 # Setting up a gtk theme
 set $gnome-schema org.gnome.desktop.interface
