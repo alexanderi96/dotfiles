@@ -28,7 +28,7 @@ bindsym $mod+Return exec $term
 set $menu bemenu-run -n
 
 # Setting the wallpaper
-output * bg $HOME/Pictures/Wallpapers/121415.jpg fill
+output * bg $HOME/Pictures/Wallpapers/OutrunPalace.jpg fill
 
 # Setting up a gtk theme
 set $gnome-schema org.gnome.desktop.interface
@@ -42,17 +42,8 @@ exec_always {
 # Setting the correct display resolution
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-# Goldtop display
-set $laptop eDP-1
-output $laptop resolution 1920x1080
-bindswitch --reload lid:on output $laptop disable
-bindswitch --reload lid:off output $laptop enable
-
 # Hdmi
 output HDMI-A-1 resolution 1920x1080
-
-# Oldtop display
-#output DVI-I-1 resolution 1600x900
 
 ### Font Configuration
 # Font for window titles

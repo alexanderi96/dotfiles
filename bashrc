@@ -18,9 +18,6 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 alias la='ls -a'
 
-#set starchip
-eval "$(starship init bash)"
-
 #ssh
-eval $(keychain --eval --quiet ~/.ssh/stego@goldtop.key)
+eval $(keychain --eval --quiet ~/.ssh/id_rsa)
 
