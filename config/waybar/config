@@ -25,18 +25,8 @@
         "memory": {
             "format": "{used:0.1f}G/{total:0.1f}G "
         },
-        "battery": {
-        "tooltip": false,
-            "states": {
-                "critical": 25
-            },
-            "format": "{capacity}% {icon}",
-            "format-full": "",
-            "format-icons": ["", "", "", "", ""],
-            "on-click": "/home/tb/scripts/inhibitSuspend.sh"
-        },
         "network": {
-            "interface": "wlp0s20f3",
+            "interface": "wlan0",
             "format-wifi": "{ipaddr} ",
             "format-disconnected": "",
 	    	"tooltip-format": "{ifname}",

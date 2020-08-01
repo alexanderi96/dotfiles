@@ -27,5 +27,8 @@ then
 	mkdir $HOME/.config/waybar
 	ln -sfv $DIR/config/waybar/style.css $HOME/.config/waybar/style.css
 	ln -sfv $DIR/config/waybar/config $HOME/.config/waybar/config
+
+	mkdir $HOME/.config/i3status-rust
+	ln -sfv $DIR/config/i3status-rust/config.toml $HOME/.config/i3status-rust/config.toml
 fi
 
