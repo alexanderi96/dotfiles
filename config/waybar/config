@@ -36,7 +36,7 @@
             "on-click": "/home/tb/scripts/inhibitSuspend.sh"
         },
         "network": {
-            "interface": "wlp0s29u1u5",
+            "interface": "wlp3s0b1",
             "format-wifi": "{ipaddr} ",
             "format-disconnected": "",
 	    	"tooltip-format": "{ifname}",
