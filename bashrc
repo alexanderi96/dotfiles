@@ -8,13 +8,15 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-# if tou installed mcfly trough yay:
-if [[ -r /usr/share/doc/mcfly/mcfly.bash ]]; then
-  source /usr/share/doc/mcfly/mcfly.bash
-fi
+# if tou installed mcfly:
+#if [[ -r /usr/share/doc/mcfly/mcfly.bash ]]; then
+#  source /usr/share/doc/mcfly/mcfly.bash
+#fi
 
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/opt/vc/bin"
+
 alias la='ls -a'
 
 #ssh
