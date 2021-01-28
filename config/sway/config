@@ -1,9 +1,4 @@
 # Alexanderi96's config file for sway
-#
-#
-#
-# First things first... let's put the italian keymap
-input * xkb_layout it
 
 ### Variables
 #
@@ -28,14 +23,14 @@ bindsym $mod+Return exec $term
 set $menu bemenu-run -n
 
 # Setting the wallpaper
-output * bg $HOME/Immagini/walls/nyultrawide.jpg fill
+output * bg $HOME/Immagini/walls/purplelake.jpg fill
 
 # Setting up a gtk theme
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Juno'
-    gsettings set $gnome-schema icon-theme 'Zafiro'
+    gsettings set $gnome-schema gtk-theme 'Sweet'
+    gsettings set $gnome-schema icon-theme 'Papirus'
     gsettings set $gnome-schema cursor-theme 'capitaine-cursors'
 }
 
@@ -43,14 +38,21 @@ exec_always {
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 # Surface Display
-output eDP-1 resolution 2736x1824
+set $SurfaceDisplay eDP-1
+set $MiGamingMonitor DP-1
+
+output $SurfaceDisplay pos 1056 1440 mode 2736x1824@59.959000Hz
+bindswitch --reload lid:on output $SurfaceDisplay disable
+bindswitch --reload lid:off output $SurfaceDisplay enable
+
+# Mi Gaming Monitor
+output $MiGamingMonitor pos 0 0 mode 3440x1440@120.000000Hz
 
 ### Font Configuration
 # Font for window titles
 font San Francisco Display Medium 12 
 
 ### Idle configuration
-
  exec swayidle -w \
           timeout 300 'swaylock -f -c 000000' \
           timeout 600 'swaymsg "output * dpms off"' \
@@ -65,7 +67,7 @@ font San Francisco Display Medium 12
 #
 # Example configuration:
 
-# Surface Trackpad
+# Surface type cover trackpad
    input "1118:2496:Microsoft_Surface_Type_Cover_Touchpad" {
        dwt enabled
        tap enabled
@@ -73,11 +75,14 @@ font San Francisco Display Medium 12
        middle_emulation enabled
    }
 
-   input "1739:33391:SYNA3081:00_06CB:826F_Touchpad" {
-       dwt enabled
-       tap enabled
-       natural_scroll enabled
-       middle_emulation enabled
+# Surface type cover keyboard
+   input "1118:2496:Microsoft_Surface_Type_Cover_Keyboard" {
+	xkb_layout it
+   }
+
+# Keychron K2 Mechanical keyboard
+   input "1452:597:Keychron_K2" {
+	xkb_layout us
    }
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -209,56 +214,45 @@ font San Francisco Display Medium 12
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 
-#    # Colors (Tender) tkx alacritty
-#   # Default colors
-#     set $background '#282828'
-#     set $foreground '#eeeeee'
-# 
-#   # Normal colors
-#     set $color1 '#282828'
-#     set $color2 '#f43753'
-#     set $color3 '#c9d05c'
-#     set $color4 '#ffc24b'
-#     set $color5 '#b3deef'
-#     set $color6 '#d3b987'
-#     set $color7 '#73cef4'
-#     set $color8 '#eeeeee'
-# 
-#   # Bright colors
-#     set $color9 '#4c4c4c'
-#     set $color10 '#f43753'
-#     set $color11 '#c9d05c'
-#     set $color12 '#ffc24b'
-#     set $color13 '#b3deef'
-#     set $color14 '#d3b987'
-#     set $color15 '#73cef4'
-#     set $color16 '#feffff'
-#
-#     #
-#     # Colors!
-#     #
-#     # class                 border          background      text         indicator         child_border
-#     client.focused          $color2         $color2         $foreground  $color2           $color2
-#     client.focused_inactive $background     $background     $foreground  $background       $background
-#     client.unfocused        $background     $background     $foreground  $background       $background
-#     client.urgent           $color2         $color2         $foreground  $color2           $color2
-#     client.placeholder      $color2         $color2         $foreground  $color2           $color2
-# 
-#     client.background       $color2
+    # Colors (Horizon Dark) tkx alacritty
+   # Default colors
+     set $background '#1c1e26'
+     set $foreground '#e0e0e0'
+ 
+   # Normal colors
+     set $color1 '#16161c'
+     set $color2 '#e95678'
+     set $color3 '#29d398'
+     set $color4 '#fab795'
+     set $color5 '#26bbd9'
+     set $color6 '#ee64ac'
+     set $color7 '#59e1e3'
+     set $color8 '#d5d8da'
+ 
+   # Bright colors
+     set $color9 '#5b5858' 
+     set $color10 '#ec6a88'
+     set $color11 '#3fdaa4'
+     set $color12 '#fbc3a7'
+     set $color13 '#3fc4de'
+     set $color14 '#f075b5'
+     set $color15 '#6be4e6'
+     set $color16 '#d5d8da'
 
-# Theme colors
-# class                   border  backgr. text    indic.  child_border
-  client.focused          #5b8277 #7fac96 #151517 #9eba86 #5b8277
-  client.focused_inactive #000000 #33333a #7fac96 #000000 #000000
-  client.unfocused        #000000 #33333a #faf6e5 #000000 #000000
-  client.urgent           #cb4b16 #fdf6e3 #1abc9c #268bd2 #cb4b16
-  client.placeholder      #ffffff #0c0c0c #ffffff #ffffff #3f6e90
-
-  client.background       #1b1e25
+     #
+     # Colors!
+     #
+     # class                 border          background      text         indicator         child_border
+     client.focused          $color2         $color2         $foreground  $color2           $color2
+     client.focused_inactive $background     $background     $foreground  $background       $background
+     client.unfocused        $background     $background     $foreground  $background       $background
+     client.urgent           $color2         $color2         $foreground  $color2           $color2
+     client.placeholder      $color2         $color2         $foreground  $color2           $color2
+ 
+     client.background       $color2
 
 titlebar_padding 6 2
 titlebar_border_thickness 2
-
 
 #
 # Resizing containers:
@@ -292,8 +286,8 @@ bar {
 
 #--- Gaps ------------------------------------------------------------------
 gaps inner 10
-gaps outer 10
-smart_gaps off
+gaps outer 5
+smart_gaps on
 
 #--- Borders ---------------------------------------------------------------
 default_floating_border pixel 1

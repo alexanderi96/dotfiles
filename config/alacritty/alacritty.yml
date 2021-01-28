@@ -181,34 +181,64 @@ env:
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: true
-# Colors (Tender)
+
+    # Colors (Horizon Dark)
 colors:
-  # Default colors
+  # Primary colors
   primary:
-    background: '#282828'
-    foreground: '#eeeeee'
+    background: '0x1c1e26'
+    foreground: '0xe0e0e0'
 
   # Normal colors
   normal:
-    black:   '#282828'
-    red:     '#f43753'
-    green:   '#c9d05c'
-    yellow:  '#ffc24b'
-    blue:    '#b3deef'
-    magenta: '#d3b987'
-    cyan:    '#73cef4'
-    white:   '#eeeeee'
+    black: '0x16161c'
+    red: '0xe95678'
+    green: '0x29d398'
+    yellow: '0xfab795'
+    blue: '0x26bbd9'
+    magenta: '0xee64ac'
+    cyan: '0x59e1e3'
+    white: '0xd5d8da'
 
   # Bright colors
   bright:
-    black:   '#4c4c4c'
-    red:     '#f43753'
-    green:   '#c9d05c'
-    yellow:  '#ffc24b'
-    blue:    '#b3deef'
-    magenta: '#d3b987'
-    cyan:    '#73cef4'
-    white:   '#feffff'
+    black: '0x5b5858'
+    red: '0xec6a88'
+    green: '0x3fdaa4'
+    yellow: '0xfbc3a7'
+    blue: '0x3fc4de'
+    magenta: '0xf075b5'
+    cyan: '0x6be4e6'
+    white: '0xd5d8da'
+
+# Colors (Tender)
+# colors:
+  # Default colors
+  # primary:
+  # background: '#282828'
+  # foreground: '#eeeeee'
+
+  # Normal colors
+  # normal:
+  # black:   '#282828'
+  # red:     '#f43753'
+  # green:   '#c9d05c'
+  # yellow:  '#ffc24b'
+  # blue:    '#b3deef'
+  # magenta: '#d3b987'
+  # cyan:    '#73cef4'
+  # white:   '#eeeeee'
+
+  # Bright colors
+  # bright:
+  # black:   '#4c4c4c'
+  # red:     '#f43753'
+  # green:   '#c9d05c'
+  # yellow:  '#ffc24b'
+  # blue:    '#b3deef'
+  # magenta: '#d3b987'
+  # cyan:    '#73cef4'
+  # white:   '#feffff'
 # Colors (Tomorrow Night Bright)
 # colors:
   # Default colors
