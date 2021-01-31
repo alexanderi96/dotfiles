@@ -11,19 +11,13 @@ set $down j
 set $up k
 set $right l
 
-# Your preferred terminal emulator
-set $term alacritty
-bindsym $mod+Return exec $term
-
-# Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu |xargs swaymsg exec --
 # this is gmenu! https://git.sr.ht/~tslocum/gmenu?0.2.4
-set $menu bemenu-run -n
 
 # Setting the wallpaper
-output * bg $HOME/Immagini/walls/purplelake.jpg fill
+output * bg $HOME/Immagini/walls/waycazz.png fill
 
 # Setting up a gtk theme
 set $gnome-schema org.gnome.desktop.interface
@@ -38,15 +32,15 @@ exec_always {
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 # Surface Display
-set $SurfaceDisplay eDP-1
-set $MiGamingMonitor DP-1
+set $surface_display eDP-1
+set $mi_gaming_monitor DP-1
 
-output $SurfaceDisplay pos 1056 1440 mode 2736x1824@59.959000Hz
-bindswitch --reload lid:on output $SurfaceDisplay disable
-bindswitch --reload lid:off output $SurfaceDisplay enable
+output $surface_display pos 1056 1440 mode 2736x1824@59.959000Hz
+bindswitch --reload lid:on output $surface_display disable
+bindswitch --reload lid:off output $surface_display enable
 
 # Mi Gaming Monitor
-output $MiGamingMonitor pos 0 0 mode 3440x1440@120.000000Hz
+output $mi_gaming_monitor pos 0 0 mode 3440x1440@120.000000Hz
 
 ### Font Configuration
 # Font for window titles
@@ -88,6 +82,13 @@ font San Francisco Display Medium 12
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+# Applications
+set $term alacritty
+set $menu bemenu-run -n
+set $lock_manager swaylock
+set $fm nautilus
+set $browser $HOME/.local/bin/firefox-wayland
+
 ### Key bindings
 #
 # Basics:
@@ -107,11 +108,20 @@ font San Francisco Display Medium 12
     # Start your launcher
     bindsym $mod+d exec --no-startup-id $menu
 
+    # Start your terminal emulator
+    bindsym $mod+Return exec $term
+
+    # Start your browser
+    bindsym $mod+z exec $browser
+
+    # Start your file manager
+    bindsym $mod+n exec $fm
+    
     # Lock the screen
     bindsym $mod+Insert exec swaylock
 
     # Take a Screenshot
-    bindsym $mod+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') 
+    bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') 
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -152,30 +162,62 @@ font San Francisco Display Medium 12
 #
 # Workspaces:
 #
+
+    # Defining some Unicode workspace icons
+
+    set $ws1 "1 "
+    set $ws2 "2 "
+    set $ws3 "3 "
+    set $ws4 "4 "
+    set $ws5 "5"
+    set $ws6 "6"
+    set $ws7 "7"
+    set $ws8 "8"
+    set $ws9 "9"
+    set $ws10 "10"
+
+
+    # and let't assign them to the big monitor by default
+    workspace $ws1 output $mi_gaming_monitor
+    workspace $ws2 output $mi_gaming_monitor
+    workspace $ws3 output $mi_gaming_monitor
+    workspace $ws4 output $mi_gaming_monitor
+
+
     # Switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
-    bindsym $mod+5 workspace 5
-    bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
-    bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
+    bindsym $mod+1 workspace $ws1
+    bindsym $mod+2 workspace $ws2
+    bindsym $mod+3 workspace $ws3
+    bindsym $mod+4 workspace $ws4
+    bindsym $mod+5 workspace $ws5
+    bindsym $mod+6 workspace $ws6
+    bindsym $mod+7 workspace $ws7
+    bindsym $mod+8 workspace $ws8
+    bindsym $mod+9 workspace $ws9
+    bindsym $mod+0 workspace $ws10
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4
-    bindsym $mod+Shift+5 move container to workspace 5
-    bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7
-    bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
+    bindsym $mod+Shift+1 move container to workspace $ws1
+    bindsym $mod+Shift+2 move container to workspace $ws2
+    bindsym $mod+Shift+3 move container to workspace $ws3
+    bindsym $mod+Shift+4 move container to workspace $ws4
+    bindsym $mod+Shift+5 move container to workspace $ws5
+    bindsym $mod+Shift+6 move container to workspace $ws6
+    bindsym $mod+Shift+7 move container to workspace $ws7
+    bindsym $mod+Shift+8 move container to workspace $ws8
+    bindsym $mod+Shift+9 move container to workspace $ws9
+    bindsym $mod+Shift+0 move container to workspace $ws10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
+#
+# Let's assign some apps to some workspaces 
+#
+
+    assign [app_id="firefox"] $ws1
+    assign [app_id="subl"] $ws2
+    assign [app_id="telegram"] $ws3
+    assign [app_id="steam"] $ws4
+
 #
 # Layout stuff:
 #
@@ -214,13 +256,14 @@ font San Francisco Display Medium 12
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 
+            }
     # Colors (Horizon Dark) tkx alacritty
    # Default colors
      set $background '#1c1e26'
      set $foreground '#e0e0e0'
  
    # Normal colors
-     set $color1 '#16161c'
+     set $color2 '#16161c'
      set $color2 '#e95678'
      set $color3 '#29d398'
      set $color4 '#fab795'
@@ -231,17 +274,18 @@ font San Francisco Display Medium 12
  
    # Bright colors
      set $color9 '#5b5858' 
-     set $color10 '#ec6a88'
-     set $color11 '#3fdaa4'
-     set $color12 '#fbc3a7'
-     set $color13 '#3fc4de'
-     set $color14 '#f075b5'
-     set $color15 '#6be4e6'
-     set $color16 '#d5d8da'
+     set $color20 '#ec6a88'
+     set $color21 '#3fdaa4'
+     set $color22 '#fbc3a7'
+     set $color23 '#3fc4de'
+     set $color24 '#f075b5'
+     set $color25 '#6be4e6'
+     set $color26 '#d5d8da'
 
      #
      # Colors!
      #
+            }
      # class                 border          background      text         indicator         child_border
      client.focused          $color2         $color2         $foreground  $color2           $color2
      client.focused_inactive $background     $background     $foreground  $background       $background
@@ -279,11 +323,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Running waybar
-bar {
-    swaybar_command waybar 
-}
-
 #--- Gaps ------------------------------------------------------------------
 gaps inner 10
 gaps outer 5
@@ -299,5 +338,22 @@ hide_edge_borders smart_no_gaps
 
 ##########################################################################
 
+bar {
+    status_command i3status -c $HOME/.config/i3status/i3status.conf
+    position top
+    height 30
+    tray_output none
+    font pango: Hack 10, FontAwesome 10
+    colors {
+        statusline $foreground
+        background $background
+        inactive_workspace $background $background $foreground
+        active_workspace $background $background $foreground
+        focused_workspace $foreground $foreground $background
+        urgent_workspace $color2 $color2 $foreground
+    }
+}
+
 include /etc/sway/config.d/*
+
 
