@@ -23,8 +23,8 @@ output * bg $HOME/Immagini/walls/waycazz.png fill
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Sweet'
-    gsettings set $gnome-schema icon-theme 'Papirus'
+    gsettings set $gnome-schema gtk-theme 'Pop-nord-dark'
+    gsettings set $gnome-schema icon-theme 'Fluent-yellow'
     gsettings set $gnome-schema cursor-theme 'capitaine-cursors'
 }
 
@@ -73,6 +73,9 @@ font San Francisco Display Medium 12
    input "1118:2496:Microsoft_Surface_Type_Cover_Keyboard" {
 	xkb_layout it
    }
+
+# Surface touchscreen configuration
+   input "1118:31:IPTS_Touch" map_to_output $surface_display
 
 # Keychron K2 Mechanical keyboard
    input "1452:597:Keychron_K2" {
@@ -135,6 +138,9 @@ set $browser $HOME/.local/bin/firefox-wayland
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+    # Poweroff
+    bindsym $mod+Shift+p exec poweroff
 #
 # Moving around:
 #
@@ -178,10 +184,11 @@ set $browser $HOME/.local/bin/firefox-wayland
 
 
     # and let't assign them to the big monitor by default
-    workspace $ws1 output $mi_gaming_monitor
-    workspace $ws2 output $mi_gaming_monitor
-    workspace $ws3 output $mi_gaming_monitor
-    workspace $ws4 output $mi_gaming_monitor
+    workspace $ws1 output $mi_gaming_monitor $surface_display
+    workspace $ws2 output $mi_gaming_monitor $surface_display
+    workspace $ws3 output $mi_gaming_monitor $surface_display
+    workspace $ws4 output $mi_gaming_monitor $surface_display
+
 
 
     # Switch to workspace
@@ -259,41 +266,41 @@ set $browser $HOME/.local/bin/firefox-wayland
             }
     # Colors (Horizon Dark) tkx alacritty
    # Default colors
-     set $background '#1c1e26'
-     set $foreground '#e0e0e0'
+     set $background	 '#1c1e26'
+     set $foreground	 '#e0e0e0'
  
    # Normal colors
-     set $color2 '#16161c'
-     set $color2 '#e95678'
-     set $color3 '#29d398'
-     set $color4 '#fab795'
-     set $color5 '#26bbd9'
-     set $color6 '#ee64ac'
-     set $color7 '#59e1e3'
-     set $color8 '#d5d8da'
+     set $black		 '#16161c'
+     set $red		 '#e95678'
+     set $green		 '#29d398'
+     set $yellow	 '#fab795'
+     set $blue		 '#26bbd9'
+     set $magenta	 '#ee64ac'
+     set $cyan		 '#59e1e3'
+     set $white		 '#d5d8da'  
  
    # Bright colors
-     set $color9 '#5b5858' 
-     set $color20 '#ec6a88'
-     set $color21 '#3fdaa4'
-     set $color22 '#fbc3a7'
-     set $color23 '#3fc4de'
-     set $color24 '#f075b5'
-     set $color25 '#6be4e6'
-     set $color26 '#d5d8da'
+     set $bright_black	 '#5b5858'  
+     set $bright_red	 '#ec6a88'
+     set $bright_green	 '#3fdaa4'
+     set $bright_yellow	 '#fbc3a7'
+     set $bright_blue	 '#3fc4de'
+     set $bright_magenta '#f075b5'
+     set $bright_cyan	 '#6be4e6'
+     set $bright_white	 '#d5d8da'  
 
      #
      # Colors!
      #
             }
-     # class                 border          background      text         indicator         child_border
-     client.focused          $color2         $color2         $foreground  $color2           $color2
-     client.focused_inactive $background     $background     $foreground  $background       $background
-     client.unfocused        $background     $background     $foreground  $background       $background
-     client.urgent           $color2         $color2         $foreground  $color2           $color2
-     client.placeholder      $color2         $color2         $foreground  $color2           $color2
+     # class                 border         	background      text         indicator         	child_border
+     client.focused          $red		$red         	$foreground  $red           	$red
+     client.focused_inactive $background 	$background     $foreground  $background       	$background
+     client.unfocused        $background    	$background     $foreground  $background       	$background
+     client.urgent           $red        	$red         	$foreground  $red           	$red
+     client.placeholder      $red        	$red         	$foreground  $red           	$red
  
-     client.background       $color2
+     client.background       $red
 
 titlebar_padding 6 2
 titlebar_border_thickness 2
@@ -326,7 +333,7 @@ bindsym $mod+r mode "resize"
 #--- Gaps ------------------------------------------------------------------
 gaps inner 10
 gaps outer 5
-smart_gaps on
+smart_gaps off
 
 #--- Borders ---------------------------------------------------------------
 default_floating_border pixel 1
@@ -350,7 +357,7 @@ bar {
         inactive_workspace $background $background $foreground
         active_workspace $background $background $foreground
         focused_workspace $foreground $foreground $background
-        urgent_workspace $color2 $color2 $foreground
+        urgent_workspace $red $red $foreground
     }
 }
 
