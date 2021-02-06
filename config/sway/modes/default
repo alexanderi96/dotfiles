@@ -14,6 +14,13 @@ bindsym $mod+Shift+d exec $menu
 bindsym $mod+Ctrl+d exec $selwin
 bindsym $mod+question exec $help
 
+# Setting up some keybindings
+# Start your browser
+bindsym $mod+z exec $browser
+
+# Start your file manager
+bindsym $mod+n exec $fm
+
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
@@ -28,13 +35,19 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec $shutdown
 
 # Media key bindings
-bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 5%-
-bindsym XF86AudioMute exec amixer -q sset 'Master' toggle
-bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 5%+
+#bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 5%-
+#bindsym XF86AudioMute exec amixer -q sset 'Master' toggle
+#bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 5%+
+bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
+bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
+bindsym XF86AudioMute exec pulseaudio-ctl mute
+bindsym XF86AudioMicMute exec pulseaudio-ctl mute-input
 
 # Screen brightness bindings
-bindsym XF86MonBrightnessDown exec light -U 5
-bindsym XF86MonBrightnessUp exec light -A 5
+#bindsym XF86MonBrightnessDown exec light -U 5
+#bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
 # capture PowerOff key
 bindsym XF86PowerOff exec $shutdown
@@ -67,30 +80,62 @@ bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
-# Switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-# Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
-# Note: workspaces can have any name you want, not just numbers.
-# We just use 1-10 as the default.
+
+    # Defining some Unicode workspace icons
+
+    set $ws1 "1 "
+    set $ws2 "2 "
+    set $ws3 "3 "
+    set $ws4 "4 "
+    set $ws5 "5"
+    set $ws6 "6"
+    set $ws7 "7"
+    set $ws8 "8"
+    set $ws9 "9"
+    set $ws10 "10"
+
+
+    # and let't assign them to the big monitor by default
+    workspace $ws1 output $mi_gaming_monitor $surface_display
+    workspace $ws2 output $mi_gaming_monitor $surface_display
+    workspace $ws3 output $mi_gaming_monitor $surface_display
+    workspace $ws4 output $mi_gaming_monitor $surface_display
+
+
+
+    # Switch to workspace
+    bindsym $mod+1 workspace $ws1
+    bindsym $mod+2 workspace $ws2
+    bindsym $mod+3 workspace $ws3
+    bindsym $mod+4 workspace $ws4
+    bindsym $mod+5 workspace $ws5
+    bindsym $mod+6 workspace $ws6
+    bindsym $mod+7 workspace $ws7
+    bindsym $mod+8 workspace $ws8
+    bindsym $mod+9 workspace $ws9
+    bindsym $mod+0 workspace $ws10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace $ws1
+    bindsym $mod+Shift+2 move container to workspace $ws2
+    bindsym $mod+Shift+3 move container to workspace $ws3
+    bindsym $mod+Shift+4 move container to workspace $ws4
+    bindsym $mod+Shift+5 move container to workspace $ws5
+    bindsym $mod+Shift+6 move container to workspace $ws6
+    bindsym $mod+Shift+7 move container to workspace $ws7
+    bindsym $mod+Shift+8 move container to workspace $ws8
+    bindsym $mod+Shift+9 move container to workspace $ws9
+    bindsym $mod+Shift+0 move container to workspace $ws10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+
+#
+# Let's assign some apps to some workspaces 
+#
+
+    assign [app_id="firefox"] $ws1
+    assign [app_id="subl"] $ws2
+    assign [app_id="telegram"] $ws3
+    assign [app_id="steam"] $ws4
 
 #
 # Layout stuff:
@@ -118,17 +163,36 @@ bindsym $mod+space focus mode_toggle
 # Move focus to the parent container
 bindsym $mod+a focus parent
 
-default_border pixel 1
-hide_edge_borders smart
+# Gaps
+gaps inner 10
+gaps outer 10
+smart_gaps off
+
+# Borders
+default_floating_border pixel 2
+default_border          pixel 2 
+for_window [title="."] title_format "%title"
+titlebar_border_thickness 0
+titlebar_padding 3 3
+hide_edge_borders smart_no_gaps
 
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
-
     # Run waybar instead of swaybar
-    swaybar_command $statusbar
+    status_command $statusbar
+    position top
+    height 30
+    tray_output none
+    font pango: Hack 10, FontAwesome 10
+    colors {
+        statusline $foreground
+        background $background
+        inactive_workspace $background $background $foreground
+        active_workspace $background $background $foreground
+        focused_workspace $foreground $foreground $background
+        urgent_workspace $red $red $foreground
 }
 

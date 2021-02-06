@@ -25,7 +25,7 @@ function color_my_prompt {
   local __user_input_color=""
     
   # Build the PS1 (Prompt String)
-  export PS1="[$__user_and_host: $__cur_location$NOCOLOR]$__prompt_tail\n> \[$(tput sgr0)\]"
+  export PS1="[$__user_and_host: $__cur_location$NOCOLOR]$__prompt_tail \[$(tput sgr0)\]"
 }
  
 # configure PROMPT_COMMAND which is executed each time before PS1

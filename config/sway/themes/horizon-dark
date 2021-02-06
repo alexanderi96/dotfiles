@@ -1,0 +1,47 @@
+# based on Base16 Seti UI
+# Author: Appelgriebsch
+
+# some global theme specific variables
+set $wallpaper $dot_pos/walls/aspen.jpg
+set $gtk-theme Pop-nord-dark
+set $icon-theme Fluent-yellow
+set $cursor-theme capitaine-cursors
+set $gui-font San Francisco Display Medium 12
+set $term-font TerminessTTF Nerd Font Mono 14
+#set $kvantum-theme Matchama-Dark
+
+# Colors (Horizon Dark) tkx alacritty
+   # Default colors
+     set $background	 '#1c1e26'
+     set $foreground	 '#e0e0e0'
+ 
+   # Normal colors
+     set $black		 '#16161c'
+     set $red		 '#e95678'
+     set $green		 '#29d398'
+     set $yellow	 '#fab795'
+     set $blue		 '#26bbd9'
+     set $magenta	 '#ee64ac'
+     set $cyan		 '#59e1e3'
+     set $white		 '#d5d8da'  
+ 
+   # Bright colors
+     set $bright_black	 '#5b5858'  
+     set $bright_red	 '#ec6a88'
+     set $bright_green	 '#3fdaa4'
+     set $bright_yellow	 '#fbc3a7'
+     set $bright_blue	 '#3fc4de'
+     set $bright_magenta '#f075b5'
+     set $bright_cyan	 '#6be4e6'
+     set $bright_white	 '#d5d8da'  
+
+     #
+     # Colors!
+     #
+     # class                 border         background      text         indicator         	child_border
+     client.focused          $red		    $red         	$foreground  $red           	$red
+     client.focused_inactive $background 	$background     $foreground  $background       	$background
+     client.unfocused        $background  	$background     $foreground  $background       	$black
+     client.urgent           $red        	$red         	$foreground  $red           	$red
+     client.placeholder      $red        	$red         	$foreground  $red           	$red
+     client.background       $red

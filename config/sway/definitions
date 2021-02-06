@@ -10,10 +10,14 @@ set $up k
 set $right l
 
 # styles - matcha-green or matcha-blue
-set $theme $HOME/myrepo/dotfiles/config/sway/themes/matcha-green
+set $theme $dot_pos/themes/horizon-dark
 
 # Your preferred terminal emulator
 set $term alacritty
+
+# Some apps
+set $fm nautilus
+set $browser $HOME/.local/bin/firefox-wayland
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -35,7 +39,7 @@ set $idle swayidle -w \
     before-sleep 'swaylock -f -c 000000'
 
 # statusbar command
-set $statusbar waybar
+set $statusbar i3status -c $HOME/.config/i3status/i3status.conf
 
 # shutdown command
-set $shutdown wlogout --buttons-per-row 3
+#set $shutdown wlogout --buttons-per-row 3
