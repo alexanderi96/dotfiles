@@ -263,7 +263,6 @@ set $browser $HOME/.local/bin/firefox-wayland
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 
-            }
     # Colors (Horizon Dark) tkx alacritty
    # Default colors
      set $background	 '#1c1e26'
@@ -292,11 +291,10 @@ set $browser $HOME/.local/bin/firefox-wayland
      #
      # Colors!
      #
-            }
      # class                 border         	background      text         indicator         	child_border
      client.focused          $red		$red         	$foreground  $red           	$red
      client.focused_inactive $background 	$background     $foreground  $background       	$background
-     client.unfocused        $background    	$background     $foreground  $background       	$background
+     client.unfocused        $background  	$background     $foreground  $background       	$black
      client.urgent           $red        	$red         	$foreground  $red           	$red
      client.placeholder      $red        	$red         	$foreground  $red           	$red
  
@@ -332,12 +330,12 @@ bindsym $mod+r mode "resize"
 
 #--- Gaps ------------------------------------------------------------------
 gaps inner 10
-gaps outer 5
+gaps outer 10
 smart_gaps off
 
 #--- Borders ---------------------------------------------------------------
-default_floating_border pixel 1
-default_border          pixel  1 
+default_floating_border pixel 2
+default_border          pixel 2 
 for_window [title="."] title_format "%title"
 titlebar_border_thickness 0
 titlebar_padding 3 3
