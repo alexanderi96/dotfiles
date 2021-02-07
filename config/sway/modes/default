@@ -21,6 +21,9 @@ bindsym $mod+z exec $browser
 # Start your file manager
 bindsym $mod+n exec $fm
 
+# Open Telegram
+bindsym $mod+t exec $telegram
+
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.

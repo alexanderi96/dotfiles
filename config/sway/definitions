@@ -18,6 +18,7 @@ set $term alacritty
 # Some apps
 set $fm nautilus
 set $browser $HOME/.local/bin/firefox-wayland
+set $telegram telegram-desktop
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
