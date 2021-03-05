@@ -12,7 +12,7 @@ env:
   # available, otherwise `xterm-256color` is used.
   TERM: xterm-256color
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -33,9 +33,9 @@ env:
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  #padding:
-  #  x: 0
-  #  y: 0
+  padding:
+    x: 15
+    y: 15
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -100,55 +100,55 @@ env:
 #tabspaces: 8
 
 # Font configuration
-#font:
+font:
   # Normal (roman) font face
-  #normal:
+  normal:
     # Font family
     #
     # Default:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    #family: monospace
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Regular
 
   # Bold font face
-  #bold:
+  bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: Bold
 
   # Italic font face
-  #italic:
+  italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Italic
 
   # Bold italic font face
-  #bold_italic:
+  bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold Italic
+    style: Bold Italic
 
   # Point size
-  #size: 11.0
+  size: 11.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -181,34 +181,63 @@ env:
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: true
-# Colors (Tender)
+# Colors (Horizon Dark)
 colors:
-  # Default colors
+  # Primary colors
   primary:
-    background: '#282828'
-    foreground: '#eeeeee'
+    background: '0x1c1e26'
+    foreground: '0xe0e0e0'
 
   # Normal colors
   normal:
-    black:   '#282828'
-    red:     '#f43753'
-    green:   '#c9d05c'
-    yellow:  '#ffc24b'
-    blue:    '#b3deef'
-    magenta: '#d3b987'
-    cyan:    '#73cef4'
-    white:   '#eeeeee'
+    black: '0x16161c'
+    red: '0xe95678'
+    green: '0x29d398'
+    yellow: '0xfab795'
+    blue: '0x26bbd9'
+    magenta: '0xee64ac'
+    cyan: '0x59e1e3'
+    white: '0xd5d8da'
 
   # Bright colors
   bright:
-    black:   '#4c4c4c'
-    red:     '#f43753'
-    green:   '#c9d05c'
-    yellow:  '#ffc24b'
-    blue:    '#b3deef'
-    magenta: '#d3b987'
-    cyan:    '#73cef4'
-    white:   '#feffff'
+    black: '0x5b5858'
+    red: '0xec6a88'
+    green: '0x3fdaa4'
+    yellow: '0xfbc3a7'
+    blue: '0x3fc4de'
+    magenta: '0xf075b5'
+    cyan: '0x6be4e6'
+    white: '0xd5d8da'
+
+# Colors (Tender)
+# colors:
+  # Default colors
+  # primary:
+  # background: '#282828'
+  # foreground: '#eeeeee'
+
+  # Normal colors
+  # normal:
+  # black:   '#282828'
+  # red:     '#f43753'
+  # green:   '#c9d05c'
+  # yellow:  '#ffc24b'
+  # blue:    '#b3deef'
+  # magenta: '#d3b987'
+  # cyan:    '#73cef4'
+  # white:   '#eeeeee'
+
+  # Bright colors
+  # bright:
+  # black:   '#4c4c4c'
+  # red:     '#f43753'
+  # green:   '#c9d05c'
+  # yellow:  '#ffc24b'
+  # blue:    '#b3deef'
+  # magenta: '#d3b987'
+  # cyan:    '#73cef4'
+  # white:   '#feffff'
 # Colors (Tomorrow Night Bright)
 # colors:
   # Default colors
@@ -317,7 +346,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.95
+background_opacity: 0.99
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

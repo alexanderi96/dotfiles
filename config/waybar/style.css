@@ -4,9 +4,9 @@
 }
 
 window#waybar {
-    font-family: Roboto;
-    font-weight: 500;
-    font-size: 14px;
+    font-family: SF Pro Display;
+    font-weight: 300;
+    font-size: 18px;
     background: rgba(11, 12, 13, 0.90);
     border-bottom: 1px solid  rgba(0, 0, 2, 0.53);
     color: #cfd6e6;
@@ -14,7 +14,7 @@ window#waybar {
 
 
 #workspaces button {
-    font-size: 17px;
+    font-size: 18px;
     box-shadow: none;
     text-shadow: none;
     padding: 0px 3px 0px 3px;
@@ -33,7 +33,7 @@ window#waybar {
 }
 
 #clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
-    font-size: 17px;
+    font-size: 18px;
     margin: 0px 10px 0px 5px;
 }
 

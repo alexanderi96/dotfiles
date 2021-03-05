@@ -2,15 +2,23 @@
 
 #getting the actual repo position
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+CONF_POS="$HOME/.config/"
 
 echo "Copy bash configuration?"
 read answare
 
-
 if [[ $answare == 'y' ]]
 then
 	ln -sfv $DIR/bashrc $HOME/.bashrc
-	ln -sfv $DIR/bash_profile $HOME/.bash_profile
+	ln -sfv $DIR/bash_profile $HOME/.bash_profile	
+fi
+
+echo "Copy vim configuration?"
+read answare
+
+if [[ $answare == 'y' ]]
+then
+	ln -sfv $DIR/vimrc $HOME/.vimrc
 fi
 
 echo "Copy Wayland setup?"
@@ -18,14 +26,11 @@ read answare
 
 if [[ $answare == 'y' ]]
 then
-	mkdir -p $HOME/.config/sway
-	ln -sfv $DIR/config/sway/config $HOME/.config/sway/config
-
-	mkdir $HOME/.config/alacritty
-	ln -sfv $DIR/config/alacritty/alacritty.yml $HOME/.config/alacritty/alacritty.yml
-
-	mkdir $HOME/.config/waybar
-	ln -sfv $DIR/config/waybar/style.css $HOME/.config/waybar/style.css
-	ln -sfv $DIR/config/waybar/config $HOME/.config/waybar/config
+	ln -sfv $DIR/config/sway $CONF_POS
+	ln -sfv $DIR/config/alacritty $CONF_POS
+	ln -sfv $DIR/config/i3status $CONF_POS
+	ln -sfv $DIR/config/mako $CONF_POS
+	ln -sfv $DIR/config/wofi $CONF_POS
+>>>>>>> 17433138c9ac349f705408f5dcccb0679baa3a62
 fi
 

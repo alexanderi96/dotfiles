@@ -1,0 +1,20 @@
+### Output configuration
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+# Surface Display
+set $surface_display eDP-1
+set $mi_gaming_monitor DP-1
+
+output $surface_display pos 1056 1440 mode 2736x1824@59.959000Hz
+bindswitch --reload lid:on output $surface_display disable
+bindswitch --reload lid:off output $surface_display enable
+
+# Mi Gaming Monitor
+output $mi_gaming_monitor pos 0 0 mode 3440x1440@120.000000Hz
+
+# import theme
+include $theme
+
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg $wallpaper fill
