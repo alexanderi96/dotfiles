@@ -28,7 +28,7 @@ bindsym $mod+Return exec $term
 set $menu bemenu-run -n
 
 # Setting the wallpaper
-output * bg $HOME/Pictures/Wallpapers/OutrunPalace.jpg fill
+output * bg $HOME/Pictures/Wallpapers/SuperSunset.png fill
 
 # Setting up a gtk theme
 set $gnome-schema org.gnome.desktop.interface
