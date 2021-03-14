@@ -38,6 +38,7 @@ fi
 
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local"
+export GOPATH=$HOME/go
 
 # Aliases
 alias ls='ls --color=auto'

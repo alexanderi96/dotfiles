@@ -32,5 +32,6 @@ then
 	ln -sfv $DIR/config/i3status $CONF_POS
 	ln -sfv $DIR/config/mako $CONF_POS
 	ln -sfv $DIR/config/wofi $CONF_POS
+	ln -sfv $DIR/config/wlogout $CONF_POS
 fi
 

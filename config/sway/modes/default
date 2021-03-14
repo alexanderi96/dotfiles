@@ -24,6 +24,9 @@ bindsym $mod+n exec $fm
 # Open Telegram
 bindsym $mod+t exec $telegram
 
+# Exec screenshot (crop)
+bindsym --release Print exec grim -g \"$(slurp)" - | wl-copy
+
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
@@ -35,22 +38,37 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
 # Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec $shutdown
+# bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id swaymsg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e  mode "$mode_system"
 
 # Media key bindings
-#bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 5%-
-#bindsym XF86AudioMute exec amixer -q sset 'Master' toggle
-#bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 5%+
-bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
-bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
-bindsym XF86AudioMute exec pulseaudio-ctl mute
+bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 5%-
+bindsym XF86AudioMute exec amixer -q sset 'Master' toggle
+bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 5%+
+#bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
+#bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
+#bindsym XF86AudioMute exec pulseaudio-ctl mute
 bindsym XF86AudioMicMute exec pulseaudio-ctl mute-input
 
 # Screen brightness bindings
-#bindsym XF86MonBrightnessDown exec light -U 5
-#bindsym XF86MonBrightnessUp exec light -A 5
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
+#bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+#bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
 # capture PowerOff key
 bindsym XF86PowerOff exec $shutdown
@@ -80,6 +98,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# Deactivate mouse focus
+focus_follows_mouse no
+
 #
 # Workspaces:
 #
@@ -89,8 +110,8 @@ bindsym $mod+Shift+Right move right
     set $ws1 "1 "
     set $ws2 "2 "
     set $ws3 "3 "
-    set $ws4 "4 "
-    set $ws5 "5"
+    set $ws4 "4 "
+    set $ws5 "5 "
     set $ws6 "6"
     set $ws7 "7"
     set $ws8 "8"
@@ -138,7 +159,8 @@ bindsym $mod+Shift+Right move right
     assign [app_id="firefox"] $ws1
     assign [app_id="subl"] $ws2
     assign [app_id="telegram"] $ws3
-    assign [app_id="steam"] $ws4
+    assign [app_id="libreoffice"] $ws4
+    assign [app_id="steam"] $ws5
 
 #
 # Layout stuff:

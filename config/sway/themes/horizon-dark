@@ -2,7 +2,7 @@
 # Author: Appelgriebsch
 
 # some global theme specific variables
-set $wallpaper $dot_pos/walls/aspen.jpg
+set $wallpaper $HOME/Pictures/Wallpapers/underw_nord.png
 set $gtk-theme Pop-nord-dark
 set $icon-theme Fluent-yellow
 set $cursor-theme capitaine-cursors

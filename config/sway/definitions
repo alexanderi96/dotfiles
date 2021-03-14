@@ -1,7 +1,7 @@
 ### Variables
 #
-# Logo key. Use Mod1 for Alt.
-set $mod Mod1
+# Logo key. Use Mod1 for Alt, Mod4 for Win
+set $mod Mod4
 
 # Home row direction keys, like vim
 set $left h
@@ -11,6 +11,8 @@ set $right l
 
 # styles - matcha-green or matcha-blue
 set $theme $dot_pos/themes/horizon-dark
+
+set $Locker grim -t jpeg -q 80 /tmp/swaylockscreen.jpeg && ffmpeg -i /tmp/swaylockscreen.jpeg -filter_complex boxblur=lr=10:lp=3 -y /tmp/swaylockscreen.jpeg && swaylock -i "/tmp/swaylockscreen.jpeg" -n
 
 # Your preferred terminal emulator
 set $term alacritty
@@ -37,7 +39,7 @@ set $idle swayidle -w \
     timeout 300 'swaylock -f -c 000000' \
     timeout 600 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f -c 000000'
+    before-sleep '$Locker'
 
 # statusbar command
 set $statusbar i3status -c $HOME/.config/i3status/i3status.conf
