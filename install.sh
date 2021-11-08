@@ -13,22 +13,21 @@ then
 	ln -sfv $DIR/bash_profile $HOME/.bash_profile
 fi
 
-echo "Copy Wayland setup?"
+echo "Copy i3 setup?"
 read answare
 
 if [[ $answare == 'y' ]]
 then
-	mkdir -p $HOME/.config/sway
-	ln -sfv $DIR/config/sway/config $HOME/.config/sway/config
+	mkdir -p $HOME/.config/i3
+	ln -sfv $DIR/config/i3/config $HOME/.config/i3/config
 
-	mkdir $HOME/.config/alacritty
-	ln -sfv $DIR/config/alacritty/alacritty.yml $HOME/.config/alacritty/alacritty.yml
+	mkdir $HOME/.config/i3status
+	ln -sfv $DIR/config/i3status/config $HOME/.config/i3status/config
 
-	mkdir $HOME/.config/waybar
-	ln -sfv $DIR/config/waybar/style.css $HOME/.config/waybar/style.css
-	ln -sfv $DIR/config/waybar/config $HOME/.config/waybar/config
+	mkdir $HOME/.config/rofi
+	ln -sfv $DIR/config/rofi/config.rasi $HOME/.config/rofi/config.rasi
 
-	mkdir $HOME/.config/i3status-rust
-	ln -sfv $DIR/config/i3status-rust/config.toml $HOME/.config/i3status-rust/config.toml
+	mkdir $HOME/.config/conky
+	ln -sfv $DIR/config/conky/conky.conf $HOME/.config/conky/conky.conf
 fi
 
