@@ -15,5 +15,7 @@ In order to set i3 as your window manager edit the file ```/etc/xdg/lxsession/LX
 After that we need to comment every row in ```/etc/xdg/lxsession/LXDE-pi/autostart``` because in my setup I don't need to manage the lxpanel or screensaver.
 
 Then the last thing to do is edit the autostart configuration in your user's config folder ```.config/lxsession/LXDE-pi/autostart``` in order to start the compositor and reload the last pywal theme
-```@wal\ -R
-@xcompmgr\ \&```
+```
+@wal -R
+@xcompmgr &
+```
