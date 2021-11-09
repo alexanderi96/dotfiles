@@ -1,10 +1,10 @@
 These are my config files for my raspberry pi car computer.
 
-The configuration is really straight forward.
+The configuration is really straight forward. (just make sure that is you're running arch the pi gets a 5V 3A power supply, otherwise it will not power up, despite it did with every other OS)
 
 just download all the dependencies with:
 
-```sudo apt install i3 i3status rofi conky feh```
+```i3 i3status rofi conky feh```
 
 optionally you can also download pywal in order to setup the dynamic system color scheme.
 

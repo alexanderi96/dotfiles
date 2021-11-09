@@ -3,14 +3,14 @@
 #getting the actual repo position
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-echo "Copy bash configuration?"
+echo "Copy various configurations?"
 read answare
-
 
 if [[ $answare == 'y' ]]
 then
 	ln -sfv $DIR/bashrc $HOME/.bashrc
-	ln -sfv $DIR/bash_profile $HOME/.bash_profile
+	ln -sfv $DIR/vimrc $HOME/.vimrc
+	ln -sfv $DIR/Xresousces $HOME/.Xresources
 fi
 
 echo "Copy i3 setup?"
