@@ -29,5 +29,11 @@ then
 
 	mkdir $HOME/.config/conky
 	ln -sfv $DIR/config/conky/conky.conf $HOME/.config/conky/conky.conf
+
+	mkdir $HOME/.config/picom
+	ln -sfv $DIR/config/picom/picom.conf $HOME/.config/picom/picom.conf
+
+	mkdir $HOME/.config/alacritty
+	ln -svf $DIR/config/alacritty/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 fi
 

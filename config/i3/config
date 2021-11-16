@@ -1,7 +1,7 @@
 # i3 config file for AurisPi (v4)
 #
 
-#exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/wallhaven.png
+#exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/medusa.png
 
 set $mod Mod4
 
@@ -9,9 +9,11 @@ font pango:DejaVu Sans Mono 12
 
 floating_modifier $mod
 
+set $term i3-sensible-terminal
+
 # start a terminal
-bindsym $mod+Return exec rxvt-unicode
-bindsym XF86HomePage exec rxvt-unicode
+bindsym $mod+Return exec $term
+bindsym XF86HomePage exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
