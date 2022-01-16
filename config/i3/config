@@ -1,8 +1,8 @@
 # i3 config file for AurisPi (v4)
 #
 
-#exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/medusa.png
-exec_always --no-startup-id xterm -e '/bin/bash ~/bootconf.sh'
+exec --no-startup-id feh --bg-fill ~/workspace/myrepo/dotfiles/wallpapers/sea.png
+#exec_always --no-startup-id xterm -e '/bin/bash ~/bootconf.sh'
 
 set $mod Mod4
 
@@ -180,20 +180,20 @@ client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
-bar {
-    status_command i3status
-    position top
-    tray_output primary
-    font pango:DejaVu Sans Mono 20
-    colors {
-        statusline $fg
-        background $bg
-        inactive_workspace $bg $bg $fg
-        active_workspace $bg $bg $fg
-        focused_workspace $fg $fg $bg
-        urgent_workspace #cc241d #cc241d $fg
-    }
-}
+#bar {
+#    status_command i3status
+#    position bottom
+#    tray_output primary
+#    font pango:DejaVu Sans Mono 25
+#    colors {
+#        statusline $fg
+#        background $bg
+#        inactive_workspace $bg $bg $fg
+#        active_workspace $bg $bg $fg
+#        focused_workspace $fg $fg $bg
+#        urgent_workspace #cc241d #cc241d $fg
+#    }
+#}
 
 default_border pixel
 
