@@ -10,7 +10,8 @@ if [[ $answare == 'y' ]]
 then
 	ln -sfv $DIR/bashrc $HOME/.bashrc
 	ln -sfv $DIR/vimrc $HOME/.vimrc
-	ln -sfv $DIR/Xresousces $HOME/.Xresources
+	ln -sfv $DIR/Xresources $HOME/.Xresources
+	cp -r $DIR/urxvt/ $HOME/.urxvt/
 fi
 
 echo "Copy i3 setup?"

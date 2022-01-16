@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PS1="[\w ($(git branch 2>/dev/null | grep '^*' | colrm 1 2))]\n[\u@\h]: \[$(tput sgr0)\]"
+PS1='[\u@\h \W]\$ '
 
 # if tou installed mcfly trough yay:
 if [[ -r /usr/share/doc/mcfly/mcfly.bash ]]; then

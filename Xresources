@@ -1,8 +1,8 @@
 !! URxvt Appearance
-URxvt.font: xft:DejaVuSansMono:style=Regular:size=15
-URxvt.boldFont: xft:DejaVuSansMono:style=Bold:size=15
-URxvt.italicFont: xft:DejaVuSansMono:style=Italic:size=15
-URxvt.boldItalicFont: xft:DejaVuSansMono:style=Bold Italic:size=15
+URxvt.font: xft:Iosevka:style=Regular:size=15
+URxvt.boldFont: xft:Iosevka:style=Bold:size=15
+URxvt.italicFont: xft:Iosevka:style=Italic:size=15
+URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=15
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.internalBorder: 5
@@ -28,4 +28,3 @@ URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.urlLauncher: firefox
 URxvt.underlineURLs: true
 URxvt.urlButton: 1
-

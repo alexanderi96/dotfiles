@@ -156,17 +156,20 @@ Install yay
     cd yay
     makepkg -si
 
+## Display Manager and DE
 -install de (lxde + i3)
 
 In this configuration we're going to use a tiling window manager like i3, in order to make things easyer with the raspberry pi and everithing, we're going to use it coupled with lxde!
 
 Let's intall everithing we need
 
-    # pacman -S lxde-common lxsession i3-gaps i3status alacritty lxdm ttf-dejavu ttf-font-awesome
+    # pacman -S lxde-common lxsession i3-gaps i3status alacritty lightdm ttf-dejavu ttf-font-awesome
 
 now you need to enable the display manager service
 
-    # systemctl enable lxdm.service
+    # systemctl enable lightdm.service
+
+Lightdm in order to work properly needs the following packages `xorg-server-xephyr` and `accountsservice`
 
 in this file you can find the global configurations for the autostart `/etc/xdg/lxsession/LXDE/autostart`
 here you can edit the default desktop configurations `/etc/xdg/lxsession/LXDE/desktop.conf` since we're setting up an i3 desktop, we're going to set it in this line
