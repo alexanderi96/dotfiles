@@ -33,5 +33,7 @@ then
 	ln -sfv $DIR/config/mako $CONF_POS
 	ln -sfv $DIR/config/wofi $CONF_POS
 	ln -sfv $DIR/config/wlogout $CONF_POS
+	ln -sfv $DIR/config/waybar $CONF_POS
+	ln -sfv $DIR/config/swaync $CONF_POS
 fi
 

@@ -10,7 +10,7 @@ set $up k
 set $right l
 
 # styles - matcha-green or matcha-blue
-set $theme $dot_pos/themes/horizon-dark
+set $theme $dot_pos/themes/dracula
 
 set $Locker grim -t jpeg -q 80 /tmp/swaylockscreen.jpeg && ffmpeg -i /tmp/swaylockscreen.jpeg -filter_complex boxblur=lr=10:lp=3 -y /tmp/swaylockscreen.jpeg && swaylock -i "/tmp/swaylockscreen.jpeg" -n
 
@@ -19,7 +19,7 @@ set $term alacritty
 
 # Some apps
 set $fm nautilus
-set $browser $HOME/.local/bin/firefox-wayland
+set $browser firefox
 set $telegram telegram-desktop
 
 # Your preferred application launcher
@@ -41,8 +41,9 @@ set $idle swayidle -w \
     resume 'swaymsg "output * dpms on"' \
     before-sleep '$Locker'
 
-# statusbar command
-set $statusbar i3status -c $HOME/.config/i3status/i3status.conf
+# statusbar command (disable waybar from app autostart)
+set $statusbar waybar
+#i3status -c $HOME/.config/i3status/i3status.conf
 
 # shutdown command
 #set $shutdown wlogout --buttons-per-row 3

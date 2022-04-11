@@ -3,4 +3,10 @@ exec $idle
 
 # autostart background applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id mako
+
+# Notification Daemon
+exec swaync
+
+# wob configs, in order to have volume progression bar ecc
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob -a bottom -M 350 --background-color=#1c1e26FF --bar-color=#e0e0e0FF --border-color=#e0e0e0FF

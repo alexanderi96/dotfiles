@@ -8,3 +8,5 @@ lines=10
 no_actions=true
 term=alacritty
 width=600
+x=1420
+y=0

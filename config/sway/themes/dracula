@@ -1,0 +1,49 @@
+# based on Base16 Seti UI
+# Author: Appelgriebsch
+
+# some global theme specific variables
+set $wallpaper $HOME/Pictures/Wallpapers/e9KmVIV.jpg
+
+set $gtk-theme Ant-Dracula
+#WhiteSur-dark-red
+set $icon-theme WhiteSur-dark
+set $cursor-theme WhiteSur-cursors
+set $gui-font San Francisco Display Medium 12
+set $term-font TerminessTTF Nerd Font Mono 14
+#set $kvantum-theme Matchama-Dark
+
+# Colors (Dracula)
+   # Default colors
+     set $background	 '#282a36'
+     set $foreground	 '#f8f8f2'
+ 
+   # Normal colors
+     set $black		 '#21222c'
+     set $red		   '#ff5555'
+     set $green		 '#50fa7b'
+     set $yellow	 '#f1fa8c'
+     set $blue		 '#bd93f9'
+     set $magenta	 '#ff79c6'
+     set $cyan		 '#8be9fd'
+     set $white		 '#f8f8f2'  
+ 
+   # Bright colors
+     set $bright_black	 '#6272a4'  
+     set $bright_red	   '#ff6e6e'
+     set $bright_green	 '#69ff94'
+     set $bright_yellow	 '#ffffa5'
+     set $bright_blue	   '#d6acff'
+     set $bright_magenta '#ff92df'
+     set $bright_cyan	   '#a4ffff'
+     set $bright_white	 '#ffffff'  
+
+     #
+     # Colors!
+     #
+     # class                 border         background      text         indicator         	child_border
+     client.focused          $red		        $red         	  $foreground  $red           	  $red
+     client.focused_inactive $background 	  $background     $foreground  $background       	$background
+     client.unfocused        $background  	$background     $foreground  $background       	$black
+     client.urgent           $red        	  $red         	  $foreground  $red           	  $red
+     client.placeholder      $red        	  $red         	  $foreground  $red           	  $red
+     client.background       $red

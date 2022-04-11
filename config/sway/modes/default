@@ -27,6 +27,9 @@ bindsym $mod+t exec $telegram
 # Exec screenshot (crop)
 bindsym --release Print exec grim -g \"$(slurp)" - | wl-copy
 
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
@@ -56,13 +59,11 @@ mode "$mode_system" {
 bindsym $mod+Shift+e  mode "$mode_system"
 
 # Media key bindings
-bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 5%-
-bindsym XF86AudioMute exec amixer -q sset 'Master' toggle
-bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 5%+
-#bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
-#bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
-#bindsym XF86AudioMute exec pulseaudio-ctl mute
-bindsym XF86AudioMicMute exec pulseaudio-ctl mute-input
+bindsym XF86AudioRaiseVolume exec pamixer -ui 2 && pamixer --get-volume > $WOBSOCK
+bindsym XF86AudioLowerVolume exec pamixer -ud 2 && pamixer --get-volume > $WOBSOCK
+bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
+
+#bindsym XF86AudioMicMute exec pulseaudio-ctl mute-input
 
 # Screen brightness bindings
 bindsym XF86MonBrightnessDown exec light -U 5
@@ -207,17 +208,17 @@ hide_edge_borders smart_no_gaps
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     # Run waybar instead of swaybar
-    status_command $statusbar
-    position top
-    height 30
-    tray_output none
-    font pango: Hack 10, FontAwesome 10
-    colors {
-        statusline $foreground
-        background $background
-        inactive_workspace $background $background $foreground
-        active_workspace $background $background $foreground
-        focused_workspace $foreground $foreground $background
-        urgent_workspace $red $red $foreground
+    swaybar_command $statusbar
+    #position top
+    #height 30
+    #tray_output none
+    #font pango: Hack 10, FontAwesome 10
+    #colors {
+    #    statusline $foreground
+    #    background $background
+    #    inactive_workspace $background $background $foreground
+    #    active_workspace $background $background $foreground
+    #    focused_workspace $foreground $foreground $background
+    #    urgent_workspace $red $red $foreground
 }
 

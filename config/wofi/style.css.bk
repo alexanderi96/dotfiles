@@ -1,0 +1,16 @@
+#input {
+  border: none;
+  border-radius: 0px;
+}
+
+#text {
+  margin-left: 1em;
+}
+
+window {
+  opacity: 1;
+  border: 2px solid #e95678;
+  background-color: #1c1e26;
+  color: #eeeeee;
+  border-radius: 5px;
+}

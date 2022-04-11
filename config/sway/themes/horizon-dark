@@ -2,10 +2,12 @@
 # Author: Appelgriebsch
 
 # some global theme specific variables
-set $wallpaper $HOME/Pictures/Wallpapers/underw_nord.png
-set $gtk-theme Pop-nord-dark
-set $icon-theme Fluent-yellow
-set $cursor-theme capitaine-cursors
+set $wallpaper $HOME/Pictures/Wallpapers/e9KmVIV.jpg
+
+set $gtk-theme Ant-Dracula
+#WhiteSur-dark-red
+set $icon-theme WhiteSur-dark
+set $cursor-theme WhiteSur-cursors
 set $gui-font San Francisco Display Medium 12
 set $term-font TerminessTTF Nerd Font Mono 14
 #set $kvantum-theme Matchama-Dark
