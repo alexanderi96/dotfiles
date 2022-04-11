@@ -10,8 +10,6 @@ read answare
 if [[ $answare == 'y' ]]
 then
 	ln -sfv $DIR/bashrc $HOME/.bashrc
-	ln -sfv $DIR/bash_profile $HOME/.bash_profile
-	
 fi
 
 echo "Copy vim configuration?"
