@@ -1,0 +1,224 @@
+### Key bindings
+#
+# Basics:
+#
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start your launcher
+bindsym $mod+d exec $appmenu
+bindsym $mod+Shift+d exec $menu
+bindsym $mod+Ctrl+d exec $selwin
+bindsym $mod+question exec $help
+
+# Setting up some keybindings
+# Start your browser
+bindsym $mod+z exec $browser
+
+# Start your file manager
+bindsym $mod+n exec $fm
+
+# Open Telegram
+bindsym $mod+t exec $telegram
+
+# Exec screenshot (crop)
+bindsym --release Print exec grim -g \"$(slurp)" - | wl-copy
+
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Exit sway (logs you out of your Wayland session)
+# bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id swaymsg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e  mode "$mode_system"
+
+# Media key bindings
+bindsym XF86AudioRaiseVolume exec pamixer -ui 2 && pamixer --get-volume > $WOBSOCK
+bindsym XF86AudioLowerVolume exec pamixer -ud 2 && pamixer --get-volume > $WOBSOCK
+bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
+
+#bindsym XF86AudioMicMute exec pulseaudio-ctl mute-input
+
+# Screen brightness bindings
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
+#bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+#bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+# capture PowerOff key
+bindsym XF86PowerOff exec $shutdown
+
+#
+# Moving around:
+#
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Deactivate mouse focus
+focus_follows_mouse no
+
+#
+# Workspaces:
+#
+
+    # Defining some Unicode workspace icons
+
+    set $ws1 "1 "
+    set $ws2 "2 "
+    set $ws3 "3 "
+    set $ws4 "4 "
+    set $ws5 "5 "
+    set $ws6 "6"
+    set $ws7 "7"
+    set $ws8 "8"
+    set $ws9 "9"
+    set $ws10 "10"
+
+
+    # and let't assign them to the big monitor by default
+    workspace $ws1 output $mi_gaming_monitor $surface_display
+    workspace $ws2 output $mi_gaming_monitor $surface_display
+    workspace $ws3 output $mi_gaming_monitor $surface_display
+    workspace $ws4 output $mi_gaming_monitor $surface_display
+
+
+
+    # Switch to workspace
+    bindsym $mod+1 workspace $ws1
+    bindsym $mod+2 workspace $ws2
+    bindsym $mod+3 workspace $ws3
+    bindsym $mod+4 workspace $ws4
+    bindsym $mod+5 workspace $ws5
+    bindsym $mod+6 workspace $ws6
+    bindsym $mod+7 workspace $ws7
+    bindsym $mod+8 workspace $ws8
+    bindsym $mod+9 workspace $ws9
+    bindsym $mod+0 workspace $ws10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace $ws1
+    bindsym $mod+Shift+2 move container to workspace $ws2
+    bindsym $mod+Shift+3 move container to workspace $ws3
+    bindsym $mod+Shift+4 move container to workspace $ws4
+    bindsym $mod+Shift+5 move container to workspace $ws5
+    bindsym $mod+Shift+6 move container to workspace $ws6
+    bindsym $mod+Shift+7 move container to workspace $ws7
+    bindsym $mod+Shift+8 move container to workspace $ws8
+    bindsym $mod+Shift+9 move container to workspace $ws9
+    bindsym $mod+Shift+0 move container to workspace $ws10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+
+#
+# Let's assign some apps to some workspaces 
+#
+
+    assign [app_id="firefox"] $ws1
+    assign [app_id="subl"] $ws2
+    assign [app_id="telegram"] $ws3
+    assign [app_id="libreoffice"] $ws4
+    assign [app_id="steam"] $ws5
+
+#
+# Layout stuff:
+#
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Gaps
+gaps inner 10
+gaps outer 10
+smart_gaps off
+
+# Borders
+default_floating_border pixel 2
+default_border          pixel 2 
+for_window [title="."] title_format "%title"
+titlebar_border_thickness 0
+titlebar_padding 3 3
+hide_edge_borders smart_no_gaps
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    # Run waybar instead of swaybar
+    swaybar_command $statusbar
+    #position top
+    #height 30
+    #tray_output none
+    #font pango: Hack 10, FontAwesome 10
+    #colors {
+    #    statusline $foreground
+    #    background $background
+    #    inactive_workspace $background $background $foreground
+    #    active_workspace $background $background $foreground
+    #    focused_workspace $foreground $foreground $background
+    #    urgent_workspace $red $red $foreground
+}
+

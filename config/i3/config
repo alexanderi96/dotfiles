@@ -1,16 +1,18 @@
 # i3 config file for AurisPi (v4)
 #
 
-#exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/medusa.png
-exec_always --no-startup-id xterm -e '/bin/bash ~/bootconf.sh'
+exec --no-startup-id feh --bg-fill ~/workspace/myrepo/dotfiles/wallpapers/nord_debian.png
+#exec_always --no-startup-id xterm -e '/bin/bash ~/bootconf.sh'
 
-set $mod Mod4
+# Mod1 = Alt Mod4 = win
+set $mod Mod1
 
 font pango:DejaVu Sans Mono 12
 
 floating_modifier $mod
 
-set $term i3-sensible-terminal
+set $term alacritty
+#i3-sensible-terminal
 
 # start a terminal
 bindsym $mod+Return exec $term
@@ -22,6 +24,11 @@ bindsym $mod+Shift+q kill
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym XF86Search exec --no-startup-id rofi --show drun
+
+#My programs
+bindsym $mod+n exec --no-startup-id nautilus
+bindsym $mod+b exec --no-startup-id firefox
+bindsym $mod+k exec --no-startup-id kodi
 
 #Audio-binding
 
@@ -170,8 +177,8 @@ bindsym $mod+r mode "resize"
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color0 #f0f0f0
+set_from_resource $fg i3.foreground #f0f0f0
+set_from_resource $bg i3.background #f0f0f0
 
 # class                 border  backgr. text indicator child_border
 client.focused          $bg     $bg     $fg  $bg       $bg
@@ -181,10 +188,10 @@ client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
 bar {
+    tray_output primary
     status_command i3status
     position top
-    tray_output primary
-    font pango:DejaVu Sans Mono 20
+    font pango:DejaVuSansMono Nerd Font 20
     colors {
         statusline $fg
         background $bg
@@ -198,3 +205,7 @@ bar {
 default_border pixel
 
 exec --no-startup-id conky -c $HOME/.config/conky/conky.conf
+exec --no-startup-id picom
+exec --no-startup-id nm-applet --sm-disable
+
+exec_always "setxkbmap -layout fr,us -option 'grp:alt_shift_toggle'"

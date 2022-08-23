@@ -24,6 +24,8 @@ alias ll='ls -l'
 
 alias startmining='~/mining/startmining.sh'
 
+alias alacritty='~/apps/alacritty/alacritty'
+
 #ssh
 eval $(keychain --eval --quiet ~/.ssh/id_ed25519)
 

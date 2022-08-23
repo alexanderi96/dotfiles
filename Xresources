@@ -1,8 +1,8 @@
 !! URxvt Appearance
-URxvt.font: xft:Iosevka:style=Regular:size=15
-URxvt.boldFont: xft:Iosevka:style=Bold:size=15
-URxvt.italicFont: xft:Iosevka:style=Italic:size=15
-URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=15
+URxvt.font: xft:DejaVuSansMono Nerd Font:style=Regular:size=15
+URxvt.boldFont: xft:DejaVuSansMono Nerd Font:style=Bold:size=15
+URxvt.italicFont: xft:DejaVuSansMono Nerd:style=Italic:size=15
+URxvt.boldItalicFont: xft:DejaVuSansMono Nerd:style=Bold Italic:size=15
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.internalBorder: 5
@@ -28,3 +28,9 @@ URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.urlLauncher: firefox
 URxvt.underlineURLs: true
 URxvt.urlButton: 1
+
+i3.foreground:	#D8DEE9
+i3.background:	#2E3440
+
+#include "/home/stego/workspace/repo/nord-xresources/src/nord"
+

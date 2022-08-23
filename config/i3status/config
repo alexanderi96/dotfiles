@@ -21,6 +21,7 @@ general {
 #order += "cpu_usage"
 #order += "cpu_temperature 0"
 #order += "memory"
+order += "volume master"
 order += "tztime local"
 
 wireless _first_ {
@@ -57,6 +58,12 @@ cpu_temperature 0 {
 
 cpu_usage {
         format = " %usage "
+}
+
+volume master {
+	format = "墳 %volume"
+	format_muted = "婢"
+	device = "pulse:1"
 }
 
 tztime local {

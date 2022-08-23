@@ -1,0 +1,22 @@
+# Alexanderi96's config file for sway
+#
+# Read `man 5 sway` for a complete reference.
+
+set $dot_pos $HOME/.config/sway
+
+# global variables
+include $dot_pos/definitions
+
+# inputs/outputs definition
+include $dot_pos/inputs/*
+include $dot_pos/outputs/*
+
+# enable modes
+include $dot_pos/modes/*
+
+# only enable this if every app you use is compatible with wayland
+# xwayland disable
+
+# include additional configs e.g. to autostart applications
+include $dot_pos/config.d/*
+include /etc/sway/config.d/*
