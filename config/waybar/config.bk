@@ -1,0 +1,100 @@
+[{
+        "layer": "top", // Waybar at top layer
+        "height": 26, // Waybar height
+        "modules-left": ["sway/workspaces", "sway/mode"],
+        "modules-center": ["sway/window"],
+        "modules-right": ["tray", "network", "pulseaudio", "custom/gpu", "cpu", "temperature", "memory", "battery", "clock", "custom/notification"],
+        "sway/workspaces": {
+            "disable-scroll": true,
+        },
+        "sway/mode": {
+        "tooltip": false,
+            "format": "{}"
+        },
+        "sway/window": {
+        "tooltip": false,
+            "max-length": 96
+        },
+        "clock": {
+        "tooltip": true,
+            "format": " {:%d/%m/%Y %H:%M}"
+        },
+        "cpu": {
+            "format": " {}%"
+        },
+        "memory": {
+            "format": " {}%"
+        },
+        "battery": {
+            "tooltip": false,
+            "states": {
+		        "warning": 25,
+                "critical": 10
+            },
+            "format": "{icon} {capacity}%",
+            "format-full": "",
+            "format-charging": "",
+            "format-icons": ["", "", "", ""],
+            "on-click": "/home/tb/scripts/inhibitSuspend.sh"
+        },
+        "network": {
+            "format": "{ifname}",
+            "format-wifi": " {essid} ({signalStrength}%)",
+            "format-ethernet": " {ipaddr}/{cidr}",
+            "format-disconnected": "", //An empty format will hide the module.
+            "tooltip-format": " {ifname} via {gwaddr}",
+            "tooltip-format-wifi": "{ipaddr}",
+            "tooltip-format-ethernet": " {ifname}",
+            "tooltip-format-disconnected": "Disconnected",
+            "on-click": "alacritty --class nmtui -e nmtui"
+        },
+        "pulseaudio": {
+           "format": "{icon} {volume}%",
+           "format-bluetooth": "{icon} {volume}%",
+           "format-muted": "",
+           "format-icons": {
+               "headphone": "",
+               "hands-free": "",
+               "headset": "",
+               "phone": "",
+               "portable": "",
+               "car": "",
+               "default": ["", ""]
+           },
+           "scroll-step": 5,
+           "on-click": "pavucontrol"
+        },
+        "custom/notification": {
+            "tooltip": false,
+            "format": "{icon}",
+            "format-icons": {
+                "notification": "<span foreground='red'><sup></sup></span>",
+                "none": "",
+                "dnd-notification": "<span foreground='red'><sup></sup></span>",
+                "dnd-none": ""
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "swaync-client -t -sw",
+            "on-click-right": "swaync-client -d -sw",
+            "escape": true
+        },
+        "temperature": {
+            "hwmon-path": "/sys/class/thermal/thermal_zone0/temp",
+            "critical-threshold": 80,
+            "format-critical": " {temperatureC}°C",
+            "format": " {temperatureC}°C"
+        },
+        "tray": {
+            "icon-size": 21,
+            "spacing": 10
+        },
+        "custom/gpu": {
+            "exec": "cat /sys/class/hwmon/hwmon2/device/gpu_busy_percent",
+            "format": "GPU: {}%",
+            "return-type": "",
+            "interval": 1
+        }
+    }
+]

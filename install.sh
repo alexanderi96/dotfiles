@@ -27,11 +27,10 @@ if [[ $answare == 'y' ]]
 then
 	ln -sfv $DIR/config/sway $CONF_POS
 	ln -sfv $DIR/config/alacritty $CONF_POS
-	ln -sfv $DIR/config/i3status $CONF_POS
-	ln -sfv $DIR/config/mako $CONF_POS
 	ln -sfv $DIR/config/wofi $CONF_POS
 	ln -sfv $DIR/config/wlogout $CONF_POS
 	ln -sfv $DIR/config/waybar $CONF_POS
 	ln -sfv $DIR/config/swaync $CONF_POS
+	ln -sfv $DIR/config/sov $CONF_POS
 fi
 

@@ -4,7 +4,7 @@
 # some global theme specific variables
 set $wallpaper $HOME/workspace/myrepo/dotfiles/walls/leaves_dracula.png
 
-set $gtk-theme Ant-Dracula
+set $gtk-theme Dracula
 set $icon-theme Fluent-purple
 set $cursor-theme WhiteSur-cursors
 set $gui-font San Francisco Display Medium 12

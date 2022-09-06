@@ -10,3 +10,6 @@ exec swaync
 # wob configs, in order to have volume progression bar ecc
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob -a bottom -M 350 --background-color=#1c1e26FF --bar-color=#e0e0e0FF --border-color=#e0e0e0FF
+
+# sov, a workspace overview for sway
+exec rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov

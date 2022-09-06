@@ -1,4 +1,8 @@
 # Setting up a gtk theme
+
+exec dbus-sway-environment
+exec configure-gtk
+
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
