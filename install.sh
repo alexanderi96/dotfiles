@@ -18,6 +18,7 @@ read answare
 if [[ $answare == 'y' ]]
 then
 	ln -sfv $DIR/vimrc $HOME/.vimrc
+	ln -sfv $DIR/config/nvim $CONF_POS
 fi
 
 echo "Copy Wayland setup?"
