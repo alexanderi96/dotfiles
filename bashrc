@@ -13,9 +13,10 @@ if [[ -r /usr/share/doc/mcfly/mcfly.bash ]]; then
   source /usr/share/doc/mcfly/mcfly.bash
 fi
 
-export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export GOPATH="$HOME/go"
+export PATH="/usr/local/go/bin:$PATH:$GOPATH/bin"
+
 
 # Aliases
 alias ls='ls --color=auto'
@@ -28,4 +29,3 @@ alias alacritty='~/apps/alacritty/alacritty'
 
 #ssh
 eval $(keychain --eval --quiet ~/.ssh/id_ed25519)
-

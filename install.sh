@@ -13,6 +13,7 @@ then
 	ln -sfv $DIR/vimrc $HOME/.vimrc
 	ln -sfv $DIR/Xresources $HOME/.Xresources
 	cp -r $DIR/urxvt/ $HOME/.urxvt/
+	ln -sfv $DIR/config/nvim $CONF_POS
 fi
 
 echo "Copy i3 setup?"
