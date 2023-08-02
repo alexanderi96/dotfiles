@@ -23,3 +23,7 @@ input "1118:31:IPTS_Touch" map_to_output $surface_display
 input "1452:597:Keychron_K2" {
 	xkb_layout us
 }
+
+# WSL Thinkpad keyboard
+input "0:0:wayland-keyboard-RDP_IT-PF1CYS5F" xkb_layout it
+input "0:0:wayland-keyboard-(null)" xkb_layout it

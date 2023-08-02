@@ -1,11 +1,10 @@
 * {
     border: none;
-    font-family: Font Awesome, Roboto, Arial, sans-serif;
+    font-family: Cascadia Code, Font Awesome, Roboto, Arial, sans-serif;
     font-size: 14px;
     color: #ffffff;
     border-radius: 8px;
 }
-
 
 window {
 	/*font-weight: bold;*/
