@@ -13,7 +13,12 @@ eval "$(mcfly init bash)"
 
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
+PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$HOME/go"
+export PATH="$PATH:/media/Storage/aurispi/dotnet"
+
+# Dotnet used for assetto corsa server
+export DOTNET_ROOT=/media/Storage/aurispi/Assetto/dotnet
 
 # Aliases
 alias ls='ls --color=auto'
@@ -22,6 +27,8 @@ alias ll='ls -l'
 
 alias startmining='~/mining/startmining.sh'
 alias vim='nvim'
+alias aurispi='ssh 192.168.1.157' # -L 9901:localhost:5901'
+alias engshell='python ~/workspace/repo/engshell/engshell.py'
 
 #ssh
 eval $(keychain --eval --quiet ~/.ssh/id_ed25519)

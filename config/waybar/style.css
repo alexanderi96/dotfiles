@@ -12,6 +12,9 @@ window {
 window#waybar {
     background: rgba(0, 0, 0, 0);
 }
+#waybar.empty, #waybar.tiled, #waybar.floating {
+    background-color: transparent;
+}
 /*-----module groups----*/
 .modules-right {
 	background-color: rgba(0,43,51,0.85);

@@ -6,12 +6,20 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
 
-    "modules-left": ["sway/workspaces"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
 
     "modules-center": ["sway/window"],
 
-    "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "network", "temperature", "battery", "battery#bat2", "clock"],
+    "modules-right": ["tray", "keyboard-state", "idle_inhibitor", "pulseaudio", "network", "temperature", "custom/gpu", "cpu", "memory", "battery", "battery#bat2", "clock", "custom/notification"],
 
+        "sway/mode": {
+        "tooltip": false,
+            "format": "{}"
+        },
+        "sway/window": {
+        "tooltip": false,
+            "max-length": 96
+        },
     "sway/workspaces": {
     	"format": "{name}: {icon}",
     	"format-icons": {
@@ -76,14 +84,14 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": " {:%d/%m/%Y %H:%M}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": " {}%",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": " {}%"
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -117,15 +125,15 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        //"format-wifi": "{essid} ({signalStrength}%) ",
-        "format-wifi": "{signalStrength}% ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        //"format-wifi": " {essid} ({signalStrength}%)",
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": " {ipaddr}/{cidr}",
+        "tooltip-format": " {ifname} via {gwaddr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "⚠ Disconnected",
         //"format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click": "wofi-wifi.sh",	// https://raw.githubusercontent.com/cristobaltapia/dotfiles_sway/master/home/.config/wofi/scripts/wofi-wifi.sh
-	//"on-click": "nmtui",
+        "on-click": "$HOME/.config/wofi/scripts/wofi-wifi.sh",	// https://raw.githubusercontent.com/cristobaltapia/dotfiles_sway/master/home/.config/wofi/scripts/wofi-wifi.sh
+	   //"on-click": "alacritty --class nmtui -e nmtui",
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -157,6 +165,38 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
+    },
+    "custom/notification": {
+            "tooltip": false,
+            "format": "{icon}",
+            "format-icons": {
+                "notification": "<span foreground='red'><sup></sup></span>",
+                "none": "",
+                "dnd-notification": "<span foreground='red'><sup></sup></span>",
+                "dnd-none": ""
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "swaync-client -t -sw",
+            "on-click-right": "swaync-client -d -sw",
+            "escape": true
+        },
+        "temperature": {
+            "hwmon-path": "/sys/class/thermal/thermal_zone0/temp",
+            "critical-threshold": 80,
+            "format-critical": " {temperatureC}°C",
+            "format": " {temperatureC}°C"
+        },
+        "tray": {
+            "icon-size": 21,
+            "spacing": 10
+        },
+        "custom/gpu": {
+            "exec": "cat /sys/class/hwmon/hwmon2/device/gpu_busy_percent",
+            "format": "GPU: {}%",
+            "return-type": "",
+            "interval": 1
+        }
 }
 
