@@ -1,13 +1,22 @@
-# default config for the wofi launcher
-
+# Impostazioni base che spaccano
 allow_images=true
 allow_markup=true
 insensitive=true
 hide_scroll=true
-#lines=10
 no_actions=true
-term=alacritty
-width=50%
-height=40%
-#x=10
-#y=10
+term=kitty        # Cambiato in kitty
+
+# Dimensioni e posizionamento
+width=30%
+height=45%
+# lines8
+# y=5%
+# x=center
+
+# Comportamento 
+prompt=Search
+layer=overlay
+show=drun
+matching=contains
+parse_search=true
+mode=run,drun

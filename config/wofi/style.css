@@ -1,43 +1,63 @@
+/* Colors with transparency */
+/* Sfondo principale: marrone base del dipinto */
+@define-color bg-main rgba(43, 36, 31, 0.85);          
+/* Entry e search bar: marrone più scuro */
+@define-color bg-secondary rgba(43, 36, 31, 0.95);     
+/* Accenti: blu del cielo */
+@define-color bg-accent rgba(70, 130, 180, 0.4);        
+@define-color bg-accent-hover rgba(70, 130, 180, 0.8);  
+/* Testo: bianco sporco del cigno */
+@define-color text-normal rgb(230, 223, 216);           
+/* Ombre più calde */
+@define-color shadow-normal rgba(25, 20, 16, 0.2);
+@define-color shadow-strong rgba(25, 20, 16, 0.4);
+
 window {
-margin: 0px;
-border: 1px solid #ff79c6;
-background-color: #282a36;
+    margin: 0px;
+    border: 2px solid rgba(70, 130, 180, 0.1);  /* Sottile bordo blu */
+    background-color: @bg-main;
+    border-radius: 12px;
 }
 
 #input {
-margin: 5px;
-border: none;
-color: #e0e0e0;
-background-color: #1c1e26;
-}
-
-#inner-box {
-margin: 5px;
-border: none;
-background-color: #282a36;
-}
-
-#outer-box {
-margin: 5px;
-border: none;
-background-color: #282a36;
-}
-
-#scroll {
-margin: 0px;
-border: none;
+    margin: 4px;
+    padding: 4px 12px;
+    border: 1px solid rgba(70, 130, 180, 0.2);  /* Bordo sottile blu */
+    color: @text-normal;
+    background-color: @bg-secondary;
+    border-radius: 8px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+    box-shadow: @shadow-normal 0 0 3px;
 }
 
 #text {
-margin: 5px;
-border: none;
-color: #e0e0e0;
-} 
-
-#entry:selected {
-background-color: #1c1e26;
+    margin: 5px;
+    border: none;
+    color: @text-normal;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
 }
 
+#entry {
+    padding: 4px 8px;
+    margin: 3px 6px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: transparent;
+    border: 1px solid transparent;  /* Bordo trasparente per evitare salti */
+}
 
+#entry:selected {
+    background-color: @bg-accent-hover;
+    border: 1px solid rgb(70, 130, 180);  /* Bordo blu pieno */
+    box-shadow: @shadow-strong 2px 2px 5px 2px;
+    transform: scale(1.02);
+}
 
-
+#entry:hover {
+    background-color: rgba(70, 130, 180, 0.15);  /* Blu molto trasparente */
+    border: 1px solid rgba(70, 130, 180, 0.3);   /* Bordo blu semi-trasparente */
+    transform: scale(1.01);
+    box-shadow: @shadow-normal 0 0 3px;
+}

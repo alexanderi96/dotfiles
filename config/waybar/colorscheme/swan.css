@@ -1,0 +1,34 @@
+/* Color Scheme - Base colors from the painting */
+@define-color base-black rgb(43, 36, 31);    /* Marrone scuro dello sfondo */
+@define-color base-teal rgb(70, 130, 180);   /* Blu del cielo */
+@define-color base-yellow rgb(212, 167, 106); /* Ocra dello sfondo */
+@define-color base-red rgb(139, 94, 43);      /* Marrone caldo */
+@define-color base-green rgb(74, 124, 61);    /* Verde della vegetazione */
+@define-color base-white rgb(230, 223, 216);  /* Bianco sporco del cigno */
+
+/* Background Colors */
+@define-color bg-main rgba(43, 36, 31, 0.8);       /* Marrone base */
+@define-color bg-secondary rgba(43, 36, 31, 0.4);   /* Marrone più trasparente */
+@define-color bg-accent rgba(70, 130, 180, 0.4);    /* Blu del cielo trasparente */
+@define-color bg-accent-hover rgba(70, 130, 180, 0.8); /* Blu del cielo più intenso */
+
+/* Status Colors - Versioni soft dei colori originali */
+@define-color bg-warning rgba(212, 167, 106, 0.1);  /* Ocra chiaro */
+@define-color bg-critical rgba(139, 94, 43, 0.1);   /* Marrone warning */
+@define-color bg-success rgba(74, 124, 61, 0.1);    /* Verde natura */
+
+/* Text Colors */
+@define-color text-normal rgb(230, 223, 216);      /* Bianco sporco del cigno */
+@define-color text-warning rgb(212, 167, 106);     /* Ocra pieno */
+@define-color text-critical rgb(139, 94, 43);      /* Marrone pieno */
+@define-color text-success rgb(74, 124, 61);       /* Verde pieno */
+
+/* Performance Colors - Manteniamo vivaci ma in tema */
+@define-color perf-high rgb(184, 125, 59);        /* Marrone caldo intenso */
+@define-color perf-balanced rgb(74, 124, 61);     /* Verde natura */
+@define-color perf-low rgb(70, 130, 180);         /* Blu cielo */
+
+/* Shadow Variables - Mantenute simili ma più calde */
+@define-color shadow-normal rgba(43, 36, 31, 0.116);
+@define-color shadow-strong rgba(43, 36, 31, 0.288);
+@define-color shadow-dark rgba(43, 36, 31, 0.4);

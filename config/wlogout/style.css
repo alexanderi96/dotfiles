@@ -1,44 +1,65 @@
 * {
     background-image: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
 }
+
 window {
-    background-color: rgba(20, 26, 27, 0.9);
-}
-button {
-    color: #eeeeee;
-    background-color: #141a1b;
-    border-style: solid;
-    border-width: 2px;
+    background: rgba(43, 36, 31, 0.5);
+    background-image: url("/tmp/screen.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 25%;
+    background-size: cover;
 }
 
-button:focus, button:active, button:hover {
-    background-color: #16a085;
-    outline-style: none;
+button {
+    all: unset;
+    color: rgb(230, 223, 216);  /* Bianco sporco del cigno */
+    font-size: 22px;
+    font-family: "JetBrainsMono Nerd Font";
+    padding: 1.5em;
+    background-color: rgba(43, 36, 31, 0.7);  /* Marrone scuro semi-trasparente */
+    margin: 7px;
+    border: 2px solid rgba(70, 130, 180, 0.1);  /* Bordo blu sottile */
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    min-width: 100px;
 }
 
+button:hover {
+    background-color: rgba(70, 130, 180, 0.2);  /* Blu del cielo semi-trasparente */
+    border: 2px solid rgb(70, 130, 180);  /* Bordo blu pieno */
+    color: rgb(230, 223, 216);  /* Bianco sporco del cigno */
+}
+
+/* Stili specifici per ogni bottone con leggere variazioni di colore */
 #lock {
-    background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+    border-color: rgba(70, 130, 180, 0.2);
 }
 
 #logout {
-    background-image: image(url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
+    border-color: rgba(74, 124, 61, 0.2);
 }
 
 #suspend {
-    background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
+    border-color: rgba(212, 167, 106, 0.2);
 }
 
 #hibernate {
-    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
+    border-color: rgba(139, 94, 43, 0.2);
 }
 
 #shutdown {
-    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+    border-color: rgba(139, 94, 43, 0.2);
 }
 
 #reboot {
-    background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+    border-color: rgba(70, 130, 180, 0.2);
+}
+
+#lock:hover, #logout:hover, #suspend:hover, 
+#hibernate:hover, #shutdown:hover, #reboot:hover {
+    background-color: rgba(43, 36, 31, 0.9);
+    border-width: 2px;
 }
