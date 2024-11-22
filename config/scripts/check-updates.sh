@@ -32,7 +32,7 @@ count_updates() {
         packages=$(dnf list --upgrades 2>/dev/null | tail -n +2 | awk '{printf "• %s -> %s\\n", $1, $2}')
         tooltip="${header}\\n\\nPacchetti:\\n${packages}"
 
-        format_json "$count 󰚰" "$tooltip" "updates-available"
+        format_json "󰚰 $count" "$tooltip" "updates-available"
     else
         format_json "󰏗" "Sistema aggiornato" "up-to-date"
     fi

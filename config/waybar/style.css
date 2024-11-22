@@ -16,6 +16,12 @@ window#waybar {
     margin: 5px;
 }
 
+window#waybar.empty #window {  
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+   }  
+
 #waybar.empty,
 #waybar.tiled,
 #waybar.floating {

@@ -9,6 +9,7 @@
         "custom/updates",
         "cpu",
         "memory",
+        "temperature",
         "backlight",
         "pulseaudio",
         "network",
@@ -16,6 +17,12 @@
         "custom/performance",
         "idle_inhibitor"
     ],
+    "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "show-special": true
+},
    "hyprland/window": {
         "max-length": 50,
     },
@@ -50,7 +57,15 @@
             "warning": 70,
             "critical": 90
         },
-        "on-click": "kitty -e gotop"
+        "on-click": "kitty -e gotop",
+        "tooltip": true,
+        "tooltip-format": "{used:0.1f}GB/{total:0.1f}GB\n{percentage}%\n{graph}"
+    },
+    "temperature": {
+        "thermal-zone": 0,
+        "critical-threshold": 80,
+        "format": " {temperatureC}°C",
+        "interval": 2
     },
     "backlight": {
         "device": "amdgpu_bl1",
@@ -125,13 +140,11 @@
     "format": "{}",
     "on-click": "~/.config/wofi/scripts/wofi-tuned-profile.sh menu"
 },
-
-
     "custom/updates": {
         "exec": "~/.config/scripts/check-updates.sh --count",
         "return-type": "json",
         "interval": 60,
-        "format": "{} ",
+        "format": "{}",
         "tooltip": true,
         "on-click": "~/.config/hypr/scripts/check-updates.sh --update",
         "on-click-right": "killall waybar && waybar",
