@@ -53,8 +53,8 @@ if [ -z "$BASHRCSOURCED" ]; then
   export PATH="$PATH:/usr/local/go/bin"
   export PATH="$PATH:$HOME/.cargo/bin"
   export GOPATH="$HOME/go"
-  export PATH="$PATH:/media/Storage/aurispi/dotnet"
-  export DOTNET_ROOT=/media/Storage/aurispi/Assetto/dotnet
+  #  export PATH="$PATH:/media/Storage/aurispi/dotnet"
+  #  export DOTNET_ROOT=/media/Storage/aurispi/Assetto/dotnet
 
   # McFly configuration
   eval "$(mcfly init bash)"
@@ -65,9 +65,8 @@ if [ -z "$BASHRCSOURCED" ]; then
   alias ll='ls -l'
   alias startmining='~/mining/startmining.sh'
   alias vim='nvim'
-  alias aurispi='ssh 192.168.1.157'
   alias engshell='python ~/workspace/repo/engshell/engshell.py'
-  alias powertop='kitten ssh powertop'
+  #alias powertop='ssh powertop'
 
   alias goland='~/.local/share/JetBrains/Toolbox/apps/goland/bin/goland -Dawt.toolkit.name=WLToolkit'
 

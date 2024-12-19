@@ -40,7 +40,7 @@ read answare
 if [[ $answare == 'y' ]]; then
   ln -sfv $DIR/config/hypr $CONF_POS
   ln -sfv $DIR/config/waybar $CONF_POS
-  ln -sfv $DIR/config/wofi $CONF_POS
+  ln -sfv $DIR/config/walker $CONF_POS
   ln -sfv $DIR/config/wlogout $CONF_POS
   ln -sfv $DIR/config/kitty $CONF_POS
   ln -sfv $DIR/config/waypaper $CONF_POS

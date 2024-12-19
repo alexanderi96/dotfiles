@@ -1,0 +1,143 @@
+/* Reset di base */
+#window,
+#box,
+#search,
+#password,
+#input,
+#typeahead,
+#list,
+child,
+scrollbar,
+slider,
+#item,
+#text,
+#label,
+#bar,
+#sub,
+#activationlabel {
+  all: unset;
+  font-family: "FiraCode", "FontAwesome";
+  font-size: 16px;
+  transition: all 0.5s ease;
+}
+
+/* Finestra principale */
+#window {
+  color: rgb(230, 223, 216);  /* text-normal */
+  background: transparent;
+  margin: 5px;
+}
+
+/* Box contenitore */
+#box {
+  background: rgba(43, 36, 31, 0.8);  /* bg-main */
+  padding: 32px;
+  border-radius: 5px;
+  border: 1px solid rgba(230, 223, 216, 0.1);
+  box-shadow: rgba(43, 36, 31, 0.116) 2px 2px 5px 2px;  /* shadow-normal */
+}
+
+/* Campo di ricerca */
+#search {
+  background: rgba(43, 36, 31, 0.4);  /* bg-secondary */
+  box-shadow: rgba(43, 36, 31, 0.116) 2px 2px 5px 2px;
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+
+/* Input e typeahead */
+#password,
+#input,
+#typeahead {
+  background: rgba(43, 36, 31, 0.4);  /* bg-secondary */
+  padding: 8px 4px;
+  border-radius: 5px;
+  color: rgb(230, 223, 216);  /* text-normal */
+}
+
+#input {
+  background: none;
+}
+
+#typeahead {
+  color: rgb(74, 124, 61);  /* text-success */
+}
+
+/* Stili per gli elementi di input */
+#input > *:first-child,
+#typeahead > *:first-child {
+  margin-right: 16px;
+  margin-left: 4px;
+  color: rgb(230, 223, 216);  /* text-normal */
+  opacity: 0.2;
+}
+
+#input > *:last-child,
+#typeahead > *:last-child {
+  color: rgb(230, 223, 216);  /* text-normal */
+  opacity: 0.8;
+}
+
+/* Lista ed elementi */
+#list {
+  margin: 5px 0;
+}
+
+child {
+  padding: 9px;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
+
+child:selected,
+child:hover {
+  background: rgba(70, 130, 180, 0.8);  /* bg-accent-hover */
+  box-shadow: rgba(43, 36, 31, 0.288) 2px 2px 5px 2px;  /* shadow-strong */
+}
+
+/* Elementi della lista */
+#item {
+  padding: 2px 5px;
+}
+
+#icon {
+  margin-right: 8px;
+  color: rgb(230, 223, 216);  /* text-normal */
+}
+
+#text {
+  color: rgb(230, 223, 216);  /* text-normal */
+}
+
+#label {
+  font-weight: 500;
+  color: rgb(230, 223, 216);  /* text-normal */
+}
+
+#sub {
+  opacity: 0.5;
+  font-size: 0.8em;
+  color: rgb(230, 223, 216);  /* text-normal */
+}
+
+/* Stato di attivazione */
+.activation #activationlabel {
+  color: rgb(74, 124, 61);  /* text-success */
+}
+
+.activation #text,
+.activation #icon,
+.activation #search {
+  opacity: 0.5;
+}
+
+/* Barra */
+#bar {
+  background: rgba(43, 36, 31, 0.4);  /* bg-secondary */
+  border-radius: 5px;
+  margin: 3px 0;
+}
+
+.barentry {
+  padding: 2px 5px;
+}

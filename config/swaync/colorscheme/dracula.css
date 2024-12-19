@@ -1,0 +1,37 @@
+/* Color Scheme */
+@define-color base-black rgb(40, 42, 54);        /* Background #282a36 */
+@define-color base-teal rgb(139, 233, 253);      /* Cyan #8be9fd */
+@define-color base-yellow rgb(241, 250, 140);    /* Yellow #f1fa8c */
+@define-color base-red rgb(255, 85, 85);         /* Red #ff5555 */
+@define-color base-green rgb(80, 250, 123);      /* Green #50fa7b */
+@define-color base-white rgb(248, 248, 242);     /* Foreground #f8f8f2 */
+@define-color base-purple rgb(189, 147, 249);    /* Purple #bd93f9 */
+@define-color base-orange rgb(255, 184, 108);    /* Orange #ffb86c */
+@define-color base-pink rgb(255, 121, 198);      /* Pink #ff79c6 */
+
+/* Background Colors */
+@define-color bg-main rgba(40, 42, 54, 0.8);     /* Background */
+@define-color bg-secondary rgba(68, 71, 90, 0.4); /* Current Line #44475a */
+@define-color bg-accent rgba(139, 233, 253, 0.4); /* Cyan */
+@define-color bg-accent-hover rgba(139, 233, 253, 0.8);
+
+/* Status Colors */
+@define-color bg-warning rgba(241, 250, 140, 0.1);  /* Yellow */
+@define-color bg-critical rgba(255, 85, 85, 0.1);   /* Red */
+@define-color bg-success rgba(80, 250, 123, 0.1);   /* Green */
+
+/* Text Colors */
+@define-color text-normal rgb(248, 248, 242);      /* Foreground */
+@define-color text-warning rgb(241, 250, 140);     /* Yellow */
+@define-color text-critical rgb(255, 85, 85);      /* Red */
+@define-color text-success rgb(80, 250, 123);      /* Green */
+
+/* Performance Colors */
+@define-color perf-high rgb(255, 85, 85);         /* Red */
+@define-color perf-balanced rgb(80, 250, 123);    /* Green */
+@define-color perf-low rgb(139, 233, 253);        /* Cyan */
+
+/* Shadow Variables */
+@define-color shadow-normal rgba(0, 0, 0, 0.116);
+@define-color shadow-strong rgba(0, 0, 0, 0.288);
+@define-color shadow-dark rgba(0, 0, 0, 0.4);
