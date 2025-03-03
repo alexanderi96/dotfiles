@@ -68,6 +68,7 @@ if [ -z "$BASHRCSOURCED" ]; then
   alias engshell='python ~/workspace/repo/engshell/engshell.py'
   #alias powertop='ssh powertop'
 
+
   alias goland='~/.local/share/JetBrains/Toolbox/apps/goland/bin/goland -Dawt.toolkit.name=WLToolkit'
 
   # fixes vscode opening in xwayland even though supporting wayland
@@ -94,8 +95,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-export GNAMMUS_GITLAB_AUTH_TOKEN="fDB3Kp6pikAYzguDygU1"
-
 # SSH keychain
 #    eval $(keychain --eval --quiet ~/.ssh/id_ed25519_personal)
 
@@ -106,3 +105,5 @@ eval $(thefuck --alias FUCK)
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+
+. "$HOME/.apikeys"

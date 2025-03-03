@@ -1,8 +1,19 @@
+/* AUTO GENERATED. DO NOT EDIT. CHANGES WILL BE OVERWRITTEN. */
+
+@define-color foreground rgba(255, 255, 255, 0.8);
+@define-color background hsla(240, 12.7%, 13.9%, 0.98);
+@define-color color1 hsl(172, 100%, 25.3%);
+/* AUTO GENERATED. DO NOT EDIT. CHANGES WILL BE OVERWRITTEN. */
+
 #window,
 #box,
+#aiScroll,
+#aiList,
 #search,
 #password,
 #input,
+#prompt,
+#clear,
 #typeahead,
 #list,
 child,
@@ -17,19 +28,22 @@ slider,
   all: unset;
 }
 
+#cfgerr {
+  background: rgba(255, 0, 0, 0.4);
+  margin-top: 20px;
+  padding: 8px;
+  font-size: 1.2em;
+}
+
 #window {
-  color: rgba(255, 255, 255, 0.8);
+  color: @foreground;
 }
 
 #box {
   border-radius: 2px;
-  background: linear-gradient(
-    to bottom,
-    hsla(240, 12.7%, 13.9%, 0.98),
-    hsla(219, 28.6%, 19.2%, 0.96)
-  );
+  background: @background;
   padding: 32px;
-  border: 1px solid #232d3f;
+  border: 1px solid lighter(@background);
   box-shadow:
     0 19px 38px rgba(0, 0, 0, 0.3),
     0 15px 12px rgba(0, 0, 0, 0.22);
@@ -39,18 +53,25 @@ slider,
   box-shadow:
     0 1px 3px rgba(0, 0, 0, 0.1),
     0 1px 2px rgba(0, 0, 0, 0.22);
+  background: lighter(@background);
+  padding: 8px;
 }
 
 #prompt {
+  margin-left: 4px;
+  margin-right: 12px;
+  color: @foreground;
+  opacity: 0.2;
+}
+
+#clear {
+  color: @foreground;
+  opacity: 0.8;
 }
 
 #password,
 #input,
 #typeahead {
-  background: hsla(219, 28.6%, 19.2%, 0.8);
-  padding: 8px;
-  padding-top: 4px;
-  padding-bottom: 4px;
   border-radius: 2px;
 }
 
@@ -62,41 +83,29 @@ slider,
 }
 
 #spinner {
+  padding: 8px;
 }
 
 #typeahead {
-  color: hsl(174, 89.7%, 32.7%);
+  color: @foreground;
+  opacity: 0.8;
 }
 
 #input placeholder {
-}
-
-#input > *:first-child,
-#typeahead > *:first-child {
-  margin-right: 16px;
-  margin-left: 4px;
-  color: rgba(255, 255, 255, 0.8);
-  opacity: 0.2;
-}
-
-#input > *:last-child,
-#typeahead > *:last-child {
-  color: rgba(255, 255, 255, 0.8);
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 #list {
 }
 
 child {
-  padding: 9px;
+  padding: 8px;
   border-radius: 2px;
 }
 
 child:selected,
 child:hover {
-  /*color: #232d3f;*/
-  background: hsla(172, 100%, 25.3%, 0.6);
+  background: alpha(@color1, 0.4);
 }
 
 #item {
@@ -134,4 +143,20 @@ child:hover {
 .activation #icon,
 .activation #search {
   opacity: 0.5;
+}
+
+.aiItem {
+  padding: 10px;
+  border-radius: 2px;
+  color: @foreground;
+  background: @background;
+}
+
+.aiItem.user {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.aiItem.assistant {
+  background: lighter(@background);
 }
