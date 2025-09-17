@@ -3,30 +3,19 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.05";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # use the following for unstable:
     # nixpkgs.url = "nixpkgs/nixos-unstable";
-
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
+  outputs = { self, nixpkgs, inixos-hardware, home-manager, ... }: {
     nixosConfigurations.sasfifsos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./sasfifsos_configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.stego = import ./home.nix;
-            backupFileExtension = "backup";
-          };
-        }
+        nixos-hardware.nixosModules.microsoft-surface-pro-intel
+	nixos-hardware.nixosModules.microsoft-surface-common
       ];
     };
   };
