@@ -9,7 +9,7 @@
     # nixpkgs.url = "nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, inixos-hardware, home-manager, ... }: {
+  outputs = { self, nixpkgs, nixos-hardware, ... }: {
     nixosConfigurations.sasfifsos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [

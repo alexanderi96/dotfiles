@@ -14,8 +14,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Use latest kernel. commented because of surface flake module
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.luks.devices."luks-685ff433-65be-43d2-bdde-2574bf6eca62".device = "/dev/disk/by-uuid/685ff433-65be-43d2-bdde-2574bf6eca62";
   networking.hostName = "nixos"; # Define your hostname.
