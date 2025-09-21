@@ -4,27 +4,35 @@
 DIR="$(cd "$(dirname "${BASH_SOURCE[1]}")" >/dev/null 2>&1 && pwd)"
 CONF_POS="$HOME/.config/"
 
-echo "Copy bash configuration?"
-read answare
+# Controlla se è passato il flag -y
+auto_yes=false
+if [[ $1 == "-y" ]]; then
+  auto_yes=true
+fi
 
-if [[ $answare == 'y' ]]; then
+# Funzione per ottenere conferma
+get_confirmation() {
+  local prompt="$1"
+  if $auto_yes; then
+    echo "$prompt: Yes (auto)"
+    return 0
+  fi
+  read -p "$prompt [y/N]: " answare
+  [[ $answare == 'y' || $answare == 'Y' ]]
+}
+
+if get_confirmation "Copy bash configuration?"; then
   ln -sfv $DIR/bashrc $HOME/.bashrc
 fi
 
-echo "Copy vim configuration?"
-read answare
-
-if [[ $answare == 'y' ]]; then
+if get_confirmation "Copy vim configuration?"; then
   ln -sfv $DIR/vimrc $HOME/.vimrc
   ln -sfv $DIR/config/nvim $CONF_POS
 fi
 
 ln -sfv $DIR/config/scripts $CONF_POS
 
-echo "Copy Sway setup?"
-read answare
-
-if [[ $answare == 'y' ]]; then
+if get_confirmation "Copy Sway setup?"; then
   ln -sfv $DIR/config/sway $CONF_POS
   ln -sfv $DIR/config/alacritty $CONF_POS
   ln -sfv $DIR/config/wofi $CONF_POS
@@ -34,10 +42,7 @@ if [[ $answare == 'y' ]]; then
   ln -sfv $DIR/config/sov $CONF_POS
 fi
 
-echo "Copy Hypr setup?"
-read answare
-
-if [[ $answare == 'y' ]]; then
+if get_confirmation "Copy Hypr setup?"; then
   ln -sfv $DIR/config/hypr $CONF_POS
   ln -sfv $DIR/config/waybar $CONF_POS
   ln -sfv $DIR/config/walker $CONF_POS

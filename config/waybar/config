@@ -17,7 +17,7 @@
         "pulseaudio",
         "network",
         "battery",
-        "custom/performance",
+        // "custom/performance",
         "idle_inhibitor"
     ],
     "hyprland/workspaces": {
@@ -136,8 +136,15 @@
         "spacing": 5,
         "icon-size": 20
     },
-"custom/performance": {
-    "exec": "~/.config/wofi/scripts/wofi-tuned-profile.sh",
+// "custom/performance": {
+//     "exec": "~/.config/wofi/scripts/wofi-tuned-profile.sh",
+//     "return-type": "json",
+//     "interval": 2,
+//     "format": "{}",
+//     "on-click": "~/.config/wofi/scripts/wofi-tuned-profile.sh menu"
+// },
+    "custom/updates": {
+    "format": "{} {icon}",
     "return-type": "json",
     "interval": 2,
     "format": "{}",
