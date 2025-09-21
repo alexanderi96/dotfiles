@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   # Enable networking
   networking.networkmanager.enable = true;
@@ -11,7 +10,7 @@
   services = {
     # SSH daemon
     openssh.enable = true;
-    
+
     # Tailscale VPN
     tailscale.enable = true;
   };
@@ -34,10 +33,10 @@
   # Optimize nix store
   nix.settings.auto-optimise-store = true;
 
-  # Enable locate database
+  # Enable locate database (updated)
   services.locate = {
     enable = true;
     package = pkgs.mlocate;
-    localuser = null;
   };
 }
+

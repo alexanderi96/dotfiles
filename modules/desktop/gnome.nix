@@ -33,19 +33,19 @@
   ];
 
   # Remove some default GNOME applications
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-    gedit # prefer other editors
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    epiphany # web browser
-    geary # email reader
-    gnome-characters
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-  ]);
+ environment.gnome.excludePackages = with pkgs; [
+  gnome-photos
+  gnome-tour
+  gedit # prefer other editors
+  #cheese
+  gnome-music
+  epiphany
+  geary
+  gnome-characters
+  tali
+  iagno
+  hitori
+  atomix
+];
+
 }

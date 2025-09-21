@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   # User information
   home.username = "stego";
@@ -8,12 +7,9 @@
   # User packages
   home.packages = with pkgs; [
     # Terminal and shell
-    kitty
-    starship
-    
+    #kitty
     # Development tools
     neovim
-    
     # System utilities
     btop
     fd
@@ -21,11 +17,9 @@
     fzf
     bat
     eza
-    
     # Media and graphics
     gimp
     vlc
-    
     # Communication
     discord
     telegram-desktop
@@ -37,7 +31,7 @@
     userName = "Alessandro Ianne";
     userEmail = "alessandro.ianne96@gmail.com";
     extraConfig = {
-      init.defaultBranch = "main";
+      init.defaultBranch = "master";
       pull.rebase = true;
       push.autoSetupRemote = true;
     };
@@ -59,18 +53,6 @@
     };
   };
 
-  # Starship prompt
-  programs.starship = {
-    enable = true;
-    settings = {
-      format = "$all$character";
-      character = {
-        success_symbol = "[➜](bold green)";
-        error_symbol = "[➜](bold red)";
-      };
-    };
-  };
-
   # Direnv for development environments
   programs.direnv = {
     enable = true;
@@ -78,6 +60,26 @@
     nix-direnv.enable = true;
   };
 
+  # Visual Studio Code with extensions (updated)
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode;
+    profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+        ms-python.python
+        ms-azuretools.vscode-docker
+        ms-vscode-remote.remote-ssh
+      ];
+      userSettings = {
+        "extensions.autoUpdate" = false;
+        "extensions.autoCheckUpdates" = false;
+        "terminal.integrated.fontFamily" = "Hack";
+      };
+    };
+  };
+
   # Home Manager state version
   home.stateVersion = "25.05";
 }
+

@@ -61,25 +61,4 @@
   # Development environment setup
   programs.direnv.enable = true;
   programs.nix-ld.enable = true;
-
-  # Go configuration
-  programs.go.enable = true;
-
-  # VSCode extensions and configuration
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      # Go
-      golang.go
-      # Rust
-      rust-lang.rust-analyzer
-      # General
-      ms-vscode.theme-dracula
-      vscodevim.vim
-      # Git
-      eamodio.gitlens
-      # Nix
-      bbenoist.nix
-    ];
-  };
 }
