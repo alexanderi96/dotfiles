@@ -1,8 +1,15 @@
 #!/bin/bash
 
 #getting the actual repo position
-DIR="$(cd "$(dirname "${BASH_SOURCE[1]}")" >/dev/null 2>&1 && pwd)"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 CONF_POS="$HOME/.config/"
+
+# Verifica che siamo nella directory corretta
+if [ ! -d "$DIR/config" ]; then
+    echo "❌ Errore: Script deve essere eseguito dalla directory home/stego/dotfiles/"
+    echo "Directory corrente: $DIR"
+    exit 1
+fi
 
 # Controlla se è passato il flag -y
 auto_yes=false
