@@ -5,21 +5,17 @@
   nixpkgs.config.allowUnfree = true;
 
   # Development tools
-  programs.git.enable = true;
+  programs = {
+    git.enable = true;
+    direnv.enable = true;
+    nix-ld.enable = true;
+  };
 
   # System packages
   environment.systemPackages = with pkgs; [
     # Editors and IDEs
-    vim
+    neovim
     vscode
-
-    # Development tools
-    go
-    rustc
-    cargo
-    rustfmt
-    clippy
-    rust-analyzer
 
     # Containerization
     podman
@@ -57,8 +53,4 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
-
-  # Development environment setup
-  programs.direnv.enable = true;
-  programs.nix-ld.enable = true;
 }

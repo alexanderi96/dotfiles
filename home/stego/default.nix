@@ -6,6 +6,8 @@
 
   # User packages
   home.packages = with pkgs; [
+    mcfly
+    thefuck
     # Terminal and shell
     #kitty
     # Development tools
@@ -39,7 +41,7 @@
 
   # Shell configuration
   programs.bash = {
-    enable = true;
+    enable = false;
     enableCompletion = true;
     historyControl = [ "ignoredups" "ignorespace" ];
     shellAliases = {
@@ -52,6 +54,15 @@
       top = "btop";
     };
   };
+
+    # Integrazione bashrc custom
+    home.file.".bashrc".source = ./dotfiles/bashrc;
+
+    # Dotfiles: integrazione file di configurazione
+    home.file.".vimrc".source = ./dotfiles/vimrc;
+
+    # Neovim
+    home.file.".config/nvim/init.vim".source = ./dotfiles/config/nvim/init.vim;
 
   # Direnv for development environments
   programs.direnv = {
