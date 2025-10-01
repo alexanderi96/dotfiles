@@ -7,7 +7,7 @@
     ./hardware.nix
     
     # Shared modules
-    ../../modules/desktop/gnome.nix
+    ../../modules/desktop/hyprland.nix
     ../../modules/programs.nix
     ../../modules/services.nix
   ];

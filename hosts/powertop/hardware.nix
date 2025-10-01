@@ -14,21 +14,20 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  # Filesystem configuration (TEMPLATE - replace with actual UUIDs)
+  # Filesystem configuration
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/REPLACE-WITH-ROOT-UUID";
+    device = "/dev/disk/by-uuid/36419627-b992-4a5c-abd3-855a3728c6f0";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/REPLACE-WITH-BOOT-UUID";
+    device = "/dev/disk/by-uuid/1C2A-6F6D";
     fsType = "vfat";
     options = [ "fmask=0077" "dmask=0077" ];
   };
 
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/REPLACE-WITH-SWAP-UUID"; }
-  ];
+  # Using zram for swap instead of disk partition
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface
   networking.useDHCP = lib.mkDefault true;
