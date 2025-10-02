@@ -8,6 +8,10 @@
     xwayland.enable = true;
   };
 
+  # Fix: rendi visibile la sessione Hyprland in ly
+  environment.etc."xdg/wayland-sessions/hyprland-uwsm.desktop".source =
+    "${pkgs.uwsm}/share/uwsm/hyprland-uwsm.desktop";
+
   # Ly display manager
   services.displayManager.ly = {
     enable = true;
@@ -16,12 +20,11 @@
       animate = true;
       bigclock = "%c";
       clockfmt = "%c";
-      # ly troverà automaticamente Hyprland tra le wayland-sessions
       wayland_cmd = "Hyprland";
     };
   };
 
-  # Audio (PipeWire)
+  # Audio - PipeWire
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -43,7 +46,7 @@
     };
   };
 
-  # XDG portal
+  # XDG Portal
   xdg.portal = {
     enable = true;
     extraPortals = [
@@ -52,7 +55,7 @@
     ];
   };
 
-  # Environment variables
+  # Env vars
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
@@ -66,7 +69,7 @@
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 
-  # Pacchetti essenziali
+  # Pacchetti
   environment.systemPackages = with pkgs; [
     util-linux  # mcookie per ly
 
@@ -88,7 +91,7 @@
     # Screenshot
     grim slurp swappy imagemagick
 
-    # Clipboard & utilities
+    # Clipboard & utils
     wl-clipboard brightnessctl playerctl inotify-tools
 
     # Applets
