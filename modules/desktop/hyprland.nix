@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  # Enable Hyprland
+  # Hyprland
   programs.hyprland = {
     enable = true;
     withUWSM = true;
     xwayland.enable = true;
   };
 
-  # Use ly as display manager with correct Wayland session path
+  # Ly display manager
   services.displayManager.ly = {
     enable = true;
     settings = {
@@ -16,29 +16,12 @@
       animate = true;
       bigclock = "%c";
       clockfmt = "%c";
-      waylandsessions = "/run/current-system/sw/share/wayland-sessions";
+      # ly troverà automaticamente Hyprland tra le wayland-sessions
       wayland_cmd = "Hyprland";
     };
   };
 
-  # Alternative: greetd with regreet
-  # services.greetd = {
-  #   enable = true;
-  #   settings = rec {
-  #     initial_session = {
-  #       command = "${pkgs.hyprland}/bin/Hyprland";
-  #       user = "stego";
-  #     };
-  #     default_session = initial_session;
-  #   };
-  # };
-
-  # programs.regreet = {
-  #   enable = true;
-  #   cageArgs = [ "-s" "-m" "last" ];
-  # };
-
-  # Audio - PipeWire (required by your config)
+  # Audio (PipeWire)
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -48,26 +31,22 @@
     wireplumber.enable = true;
   };
 
-  # Polkit agent (required by your autostart)
+  # Polkit agent
   security.polkit.enable = true;
   systemd.user.services.hyprpolkitagent = {
     description = "hyprpolkitagent";
     wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
     after = [ "graphical-session.target" ];
     serviceConfig = {
-      Type = "simple";
       ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
       Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
     };
   };
 
-  # XDG Portal
+  # XDG portal
   xdg.portal = {
     enable = true;
-    extraPortals = [ 
+    extraPortals = [
       pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
@@ -84,86 +63,60 @@
     QT_QPA_PLATFORM = "wayland";
     QT_QPA_PLATFORMTHEME = "qt5ct";
     MOZ_ENABLE_WAYLAND = "1";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "Hyprland";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 
-  # Essential packages for your Hyprland config
+  # Pacchetti essenziali
   environment.systemPackages = with pkgs; [
-    # System utilities (required by ly)
-    util-linux  # Provides mcookie command needed by ly
-    
-    # Core Hyprland ecosystem
-    hyprland
-    hyprpaper
-    hypridle
-    hyprlock
-    hyprsunset
-    hyprpicker
-    
-    # Terminal & File Manager (from your config)
-    kitty
-    yazi  # Modern TUI file manager
-    
-    # Application launcher & logout
-    walker
-    # elephant  # Walker dependency for app indexing (not available in nixpkgs)
-    wlogout
-    
+    util-linux  # mcookie per ly
+
+    # Hyprland ecosystem
+    hyprland hyprpaper hypridle hyprlock hyprsunset hyprpicker
+
+    # Terminal & file manager
+    kitty yazi
+
+    # App launcher & logout
+    walker wlogout
+
     # Status bar & notifications
-    waybar
-    swaynotificationcenter  # or mako if you prefer
-    
-    # Wallpaper management
+    waybar swaynotificationcenter
+
+    # Wallpaper
     waypaper
-    
-    # Screenshot tools
-    grim
-    slurp
-    swappy
-    imagemagick  # Required by shot.sh script for blur effects
-    
+
+    # Screenshot
+    grim slurp swappy imagemagick
+
     # Clipboard & utilities
-    wl-clipboard
-    brightnessctl
-    playerctl
-    inotify-tools  # Required by waybar start script
-    
-    # System applets
-    networkmanagerapplet  # nm-applet
-    blueman               # blueman-applet
-    
-    # Cursors & themes
-    bibata-cursors
-    adwaita-icon-theme
-    
-    # Qt5 configuration
+    wl-clipboard brightnessctl playerctl inotify-tools
+
+    # Applets
+    networkmanagerapplet blueman
+
+    # Themes & cursori
+    bibata-cursors adwaita-icon-theme
+
+    # Qt
     libsForQt5.qt5ct
-    
-    # Power management
+
+    # Power mgmt
     tuned
   ];
 
-  # Enable required services
+  # Servizi
   services.blueman.enable = true;
   services.tuned.enable = true;
-  
-  # Network manager
   networking.networkmanager.enable = true;
-  
+
   # Bluetooth
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
   };
 
-  # Fonts (basic set)
+  # Fonts
   fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-emoji
-    fira-code
-    fira-code-symbols
+    noto-fonts noto-fonts-emoji fira-code fira-code-symbols
   ];
 }
