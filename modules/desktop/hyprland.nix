@@ -7,31 +7,31 @@
     xwayland.enable = true;
   };
 
-  # Use ly as display manager instead of gdm
-  services.greetd = {
+  # Use ly as display manager
+  services.ly = {
     enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland";
-        user = "stego";
-      };
-      default_session = initial_session;
+    settings = {
+      animation = "matrix";
+      bigclock = "%c";
+      clockfmt = "%c";
     };
   };
 
-  programs.regreet = {
-    enable = true;
-    cageArgs = [ "-s" "-m" "last" ];
-  };
-
-  # Alternative: pure ly display manager
-  # services.ly = {
+  # Alternative: greetd with regreet
+  # services.greetd = {
   #   enable = true;
-  #   settings = {
-  #     animation = "matrix";
-  #     bigclock = "%c";
-  #     clockfmt = "%c";
+  #   settings = rec {
+  #     initial_session = {
+  #       command = "${pkgs.hyprland}/bin/Hyprland";
+  #       user = "stego";
+  #     };
+  #     default_session = initial_session;
   #   };
+  # };
+
+  # programs.regreet = {
+  #   enable = true;
+  #   cageArgs = [ "-s" "-m" "last" ];
   # };
 
   # Audio - PipeWire (required by your config)
