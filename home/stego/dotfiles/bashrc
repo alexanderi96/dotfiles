@@ -25,6 +25,7 @@ if [ -z "$BASHRCSOURCED" ]; then
     fi
 
     # Colorized PS1 with full path option
+    # Thanks @NicoNex for the PS1!
     # To switch between \w (full path) and \W (current directory), change the corresponding character
     PS1='\[\e[1;37m\][\[\e[m\]\[\e[1;33m\]\u\[\e[m\]\[\e[1;37m\]@\[\e[m\]\[\e[1;33m\]\h\[\e[m\]\[\e[1;37m\] \[\e[m\]\[\e[1;35m\]\w\[\e[m\]\[\e[1;37m\]]\[\e[m\]\[\e[1;37m\]\\$\[\e[m\] '
   fi

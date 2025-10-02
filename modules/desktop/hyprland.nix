@@ -98,10 +98,11 @@
     
     # Terminal & File Manager (from your config)
     kitty
-    nautilus
+    yazi  # Modern TUI file manager
     
     # Application launcher & logout
     walker
+    elephant  # Walker dependency for app indexing
     wlogout
     
     # Status bar & notifications
@@ -115,11 +116,13 @@
     grim
     slurp
     swappy
+    imagemagick  # Required by shot.sh script for blur effects
     
     # Clipboard & utilities
     wl-clipboard
     brightnessctl
     playerctl
+    inotify-tools  # Required by waybar start script
     
     # System applets
     networkmanagerapplet  # nm-applet
