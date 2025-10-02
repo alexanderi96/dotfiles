@@ -14,8 +14,13 @@
       animation = "matrix";
       bigclock = "%c";
       clockfmt = "%c";
+      # Specify paths for Wayland sessions
+      waylandsessions = "/run/current-system/sw/share/wayland-sessions";
     };
   };
+
+  # Ensure Hyprland session is available for ly
+  services.displayManager.sessionPackages = [ pkgs.hyprland ];
 
   # Alternative: greetd with regreet
   # services.greetd = {
@@ -88,6 +93,9 @@
 
   # Essential packages for your Hyprland config
   environment.systemPackages = with pkgs; [
+    # System utilities (required by ly)
+    util-linux  # Provides mcookie command needed by ly
+    
     # Core Hyprland ecosystem
     hyprland
     hyprpaper
