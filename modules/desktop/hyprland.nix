@@ -106,7 +106,7 @@
     
     # Status bar & notifications
     waybar
-    swaync  # or mako if you prefer
+    swaynotificationcenter  # or mako if you prefer
     
     # Wallpaper management
     waypaper
@@ -130,7 +130,7 @@
     adwaita-icon-theme
     
     # Qt5 configuration
-    qt5ct
+    libsForQt5.qt5ct
     
     # Power management
     tuned
