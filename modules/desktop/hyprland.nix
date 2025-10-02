@@ -12,15 +12,26 @@
     enable = true;
     settings = {
       animation = "matrix";
-      bigclock = "%c";
-      clockfmt = "%c";
-      # Specify paths for Wayland sessions
-      waylandsessions = "/run/current-system/sw/share/wayland-sessions";
     };
   };
 
-  # Ensure Hyprland session is available for ly
-  services.displayManager.sessionPackages = [ pkgs.hyprland ];
+  # Create ly config.ini manually with correct session paths
+  environment.etc."ly/config.ini".text = ''
+    # Ly configuration
+    animate = true
+    animation = 0
+    bigclock = %c
+    clockfmt = %c
+    
+    # Session paths - critical for Wayland support
+    waylandsessions = /run/current-system/sw/share/wayland-sessions
+    
+    # TTY to use
+    tty = 2
+    
+    # Wayland command (for Hyprland)
+    wayland_cmd = /run/current-system/sw/bin/Hyprland
+  '';
 
   # Alternative: greetd with regreet
   # services.greetd = {
