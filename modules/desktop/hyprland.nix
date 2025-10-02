@@ -102,7 +102,7 @@
     
     # Application launcher & logout
     walker
-    elephant  # Walker dependency for app indexing
+    # elephant  # Walker dependency for app indexing (not available in nixpkgs)
     wlogout
     
     # Status bar & notifications
