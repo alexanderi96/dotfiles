@@ -8,7 +8,7 @@
   };
 
   # Use ly as display manager
-  services.ly = {
+  services.displayManager.ly = {
     enable = true;
     settings = {
       animation = "matrix";
