@@ -28,6 +28,10 @@
     # Gaming
     steam
 
+    # Essential GPU support
+    vulkan-tools
+    vulkan-loader
+
     # System utilities
     wget
     curl

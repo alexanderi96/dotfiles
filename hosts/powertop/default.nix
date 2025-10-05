@@ -71,11 +71,33 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # OpenGL
+  # OpenGL and Vulkan
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [
+      # NVIDIA Vulkan drivers
+      nvidia-vaapi-driver
+      libvdpau-va-gl
+    ];
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      nvidia-vaapi-driver
+      libvdpau-va-gl
+    ];
   };
+
+  # Gaming optimizations for VM
+  boot.kernelParams = [
+    # GPU passthrough optimizations
+    "nvidia-drm.modeset=1"
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    # VM performance
+    "mitigations=off"
+    "split_lock_detect=off"
+  ];
+
+  # Performance governor for gaming
+  powerManagement.cpuFreqGovernor = "performance";
 
   # Proxmox VM optimizations
   services.qemuGuest.enable = true;
