@@ -23,6 +23,7 @@
 
     # Productivity
     obsidian
+    beeper
 
     # Gaming
     steam
