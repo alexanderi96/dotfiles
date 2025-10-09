@@ -33,6 +33,7 @@
     vulkan-loader
 
     # System utilities
+    tmux
     wget
     curl
     htop
