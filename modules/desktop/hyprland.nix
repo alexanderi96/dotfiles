@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-{
+
 {
   programs.hyprland = {
     enable = true;
@@ -25,7 +25,7 @@
     zsh
     bash
   '';
-}
+
 
   # Audio - PipeWire
   security.rtkit.enable = true;
