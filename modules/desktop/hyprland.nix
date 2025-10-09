@@ -8,9 +8,8 @@
     xwayland.enable = true;
   };
 
-  # Fix: rendi visibile la sessione Hyprland in ly
-  environment.etc."xdg/wayland-sessions/hyprland-uwsm.desktop".source =
-    "${pkgs.uwsm}/share/uwsm/hyprland-uwsm.desktop";
+  # Sessioni Wayland da rendere visibili ai DM
+  services.xserver.displayManager.sessionPackages = [ pkgs.uwsm ];
 
   # Ly display manager
   services.displayManager.ly = {
