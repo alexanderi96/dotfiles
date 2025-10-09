@@ -19,6 +19,7 @@
 
     # Containerization
     podman
+    podman-compose
     distrobox
 
     # Productivity
