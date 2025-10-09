@@ -82,7 +82,7 @@
     kitty yazi
 
     # App launcher & logout
-    vicinae wlogout
+    wlogout
 
     # Status bar & notifications
     waybar swaynotificationcenter

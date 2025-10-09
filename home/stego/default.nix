@@ -5,6 +5,7 @@
     ./programs/shell.nix
     ./programs/vscode.nix
     ./programs/direnv.nix
+    ./programs/vicinae.nix
   ];
 
   # User information

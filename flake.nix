@@ -8,9 +8,10 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }: 
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, vicinae, ... }: 
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -32,6 +33,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.stego = import ./home/stego/default.nix;
+          home-manager.extraSpecialArgs = { inherit vicinae; };
         }
       ];
     };
@@ -48,6 +50,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.stego = import ./home/stego/default.nix;
+          home-manager.extraSpecialArgs = { inherit vicinae; };
         }
       ];
     };
