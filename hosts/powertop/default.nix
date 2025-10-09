@@ -4,7 +4,7 @@
 {
   imports = [
     # Include the results of the hardware scan
-    ./hardware-configuration.nix
+    ./hardware.nix
     
     # Shared modules
     ../../modules/desktop/hyprland.nix
@@ -43,40 +43,33 @@
   };
   console.keyMap = "us";
 
-  # NVIDIA Configuration
+  # === NVIDIA Configuration (GTX 1070 Ti Passthrough) ===
   services.xserver.videoDrivers = [ "nvidia" ];
+  
   hardware.nvidia = {
-    # Modesetting is required
+    # Required for Wayland/Hyprland
     modesetting.enable = true;
 
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail
+    # Power management (disabled for VM stability)
     powerManagement.enable = false;
-    # Fine-grained power management. Turns off GPU when not in use
     powerManagement.finegrained = false;
 
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver)
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
+    # Use proprietary driver (open-source not supported for GTX 1070 Ti)
+    # Open driver requires Turing architecture or newer
     open = false;
 
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
+    # Enable NVIDIA settings GUI
     nvidiaSettings = true;
 
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    # Use stable driver version
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # OpenGL and Vulkan
+  # Hardware acceleration (OpenGL/Vulkan)
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      # NVIDIA Vulkan drivers
       nvidia-vaapi-driver
       libvdpau-va-gl
     ];
@@ -86,22 +79,36 @@
     ];
   };
 
-  # Gaming optimizations for VM
+  # === Kernel Parameters ===
   boot.kernelParams = [
-    # GPU passthrough optimizations
+    # NVIDIA DRM modesetting (required for Wayland)
     "nvidia-drm.modeset=1"
+    # Preserve video memory allocations (helps with suspend/resume)
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    # VM performance
+    # PCI resource reallocation (improves passthrough stability)
+    "pci=realloc"
+    # Performance optimizations
     "mitigations=off"
     "split_lock_detect=off"
   ];
 
-  # Performance governor for gaming
+  # CPU governor for maximum performance
   powerManagement.cpuFreqGovernor = "performance";
 
-  # Proxmox VM optimizations
+  # === Proxmox VM Integration ===
+  # QEMU guest agent for VM management
   services.qemuGuest.enable = true;
+  
+  # SPICE agent for display auto-resize and clipboard sharing
   services.spice-vdagentd.enable = true;
+
+  # === NVIDIA-specific Environment Variables ===
+  environment.sessionVariables = {
+    # GLX vendor library for NVIDIA
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    # GBM backend for NVIDIA
+    GBM_BACKEND = "nvidia-drm";
+  };
 
   # User account
   users.users.stego = {

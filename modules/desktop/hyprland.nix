@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 
-
 {
   programs.hyprland = {
     enable = true;
@@ -18,14 +17,6 @@
       };
     };
   };
-
-  # opzionale: per far partire tuigreet con un look più pulito
-  environment.etc."greetd/environments".text = ''
-    Hyprland
-    zsh
-    bash
-  '';
-
 
   # Audio - PipeWire
   security.rtkit.enable = true;
@@ -58,23 +49,31 @@
     ];
   };
 
-  # Env vars
+  # Environment variables for Wayland
   environment.sessionVariables = {
+    # Wayland compatibility
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
+    
+    # Cursor configuration
     XCURSOR_SIZE = "24";
     XCURSOR_THEME = "Bibata-Modern-Classic";
+    
+    # GTK/GDK
     GTK_THEME = "Adwaita-dark";
     GDK_BACKEND = "wayland,x11,*";
+    
+    # Qt
     QT_QPA_PLATFORM = "wayland";
     QT_QPA_PLATFORMTHEME = "qt5ct";
+    
+    # Browser/Electron
     MOZ_ENABLE_WAYLAND = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 
   # Pacchetti
   environment.systemPackages = with pkgs; [
-    util-linux  # mcookie per ly
 
     # Hyprland ecosystem
     hyprland hyprpaper hypridle hyprlock hyprsunset hyprpicker
@@ -83,7 +82,7 @@
     kitty yazi
 
     # App launcher & logout
-    walker wlogout
+    vicinae wlogout
 
     # Status bar & notifications
     waybar swaynotificationcenter
