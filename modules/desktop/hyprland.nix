@@ -1,27 +1,31 @@
 { config, pkgs, ... }:
 
 {
-  # Hyprland
+{
   programs.hyprland = {
     enable = true;
     withUWSM = true;
     xwayland.enable = true;
   };
 
-  # Sessioni Wayland da rendere visibili ai DM
-  services.xserver.displayManager.sessionPackages = [ pkgs.uwsm ];
-
-  # Ly display manager
-  services.displayManager.ly = {
+  services.greetd = {
     enable = true;
+    package = pkgs.greetd.tuigreet;
     settings = {
-      animation = "matrix";
-      animate = true;
-      bigclock = "%c";
-      clockfmt = "%c";
-      wayland_cmd = "Hyprland";
+      default_session = {
+        command = "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop";
+        user = "stego"; # cambia col tuo username
+      };
     };
   };
+
+  # opzionale: per far partire tuigreet con un look più pulito
+  environment.etc."greetd/environments".text = ''
+    Hyprland
+    zsh
+    bash
+  '';
+}
 
   # Audio - PipeWire
   security.rtkit.enable = true;
