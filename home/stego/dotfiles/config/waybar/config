@@ -1,187 +1,203 @@
 {
-    "layer": "top",
-    "height": 34,
-    "spacing": 1,
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
-    "modules-center": [
-        "clock",
-        "custom/notification"
-],
-    "modules-right": [
-        "tray",
-        "custom/updates",
-        "cpu",
-        "memory",
-        "temperature",
-        "backlight",
-        "pulseaudio",
-        "network",
-        "battery",
-        // "custom/performance",
-        "idle_inhibitor"
-    ],
-    "hyprland/workspaces": {
+  "layer": "top",
+  "height": 34,
+  "spacing": 1,
+  "modules-center": [
+    "clock",
+    "custom/notification"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/updates",
+    "cpu",
+    "memory",
+    "temperature",
+    "backlight",
+    "pulseaudio",
+    "network",
+    "battery",
+    "idle_inhibitor"
+  ],
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:%d/%m/%Y}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'>{}</span>",
+        "weeks": "<span color='#99ffdd'>{}</span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>"
+      }
+    }
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "󰻠 {usage}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    },
+    "on-click": "kitty -e btop"
+  },
+  "memory": {
+    "interval": 1,
+    "format": "󰍛 {percentage}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    },
+    "on-click": "kitty -e btop",
+    "tooltip": true,
+    "tooltip-format": "{used}GB/{total}GB\n{percentage}%\n{graph}"
+  },
+  "temperature": {
+    "thermal-zone": 0,
+    "critical-threshold": 80,
+    "format": " {temperatureC}°C",
+    "interval": 2
+  },
+  "backlight": {
+    "device": "amdgpu_bl1",
     "format": "{icon}",
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
-    "show-special": true
-},
-   "hyprland/window": {
-        "max-length": 50,
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+    "tooltip": true,
+    "tooltip-format": "Brightness: {percent}%",
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
     },
-    "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%d/%m/%Y}",
-        "tooltip-format": "<tt>{calendar}</tt>",
-        "calendar": {
-            "mode": "month",
-            "weeks-pos": "right",
-            "on-scroll": 1,
-            "format": {
-                "months": "<span color='#ffead3'>{}</span>",
-                "weeks": "<span color='#99ffdd'>{}</span>",
-                "today": "<span color='#ff6699'><b>{}</b></span>"
-            }
-        }
-    },
-    "cpu": {
-        "interval": 1,
-        "format": "󰻠 {usage}%",
-        "states": {
-            "warning": 70,
-            "critical": 90
-        },
-        "on-click": "kitty -e gotop"
-    },
-    "memory": {
-        "interval": 1,
-        "format": "󰍛 {percentage}%",
-        "states": {
-            "warning": 70,
-            "critical": 90
-        },
-        "on-click": "kitty -e gotop",
-        "tooltip": true,
-        "tooltip-format": "{used:0.1f}GB/{total:0.1f}GB\n{percentage}%\n{graph}"
-    },
-    "temperature": {
-        "thermal-zone": 0,
-        "critical-threshold": 80,
-        "format": " {temperatureC}°C",
-        "interval": 2
-    },
-    "backlight": {
-        "device": "amdgpu_bl1",
-        "format": "{icon}",
-        "format-icons": ["󰃞", "󰃟", "󰃠"],
-        "tooltip": true,
-        "tooltip-format": "Brightness: {percent}%",
-        "on-scroll-up": "brightnessctl set +5%",
-        "on-scroll-down": "brightnessctl set 5%-"
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "interval": 10,
-        "format": "{icon} {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
-        "format-plugged": "󱘖 {capacity}%",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-    },
-   "network": {
-        "format-wifi": "󰤨", 
-        "format-ethernet": "󰈁 {ipaddr}",
-        "tooltip-format-wifi": "SSID: {essid}\nIP: {ipaddr}\nFrequency: {frequency}GHz\nStrength: {signalStrength}%",
-        "tooltip-format-ethernet": "IP: {ipaddr}/{cidr}",
-        "format-linked": "󰈂 No IP",
-        "format-disconnected": "󰤭 Disconnected",
-        "format-disabled": "󰤭 Disabled",
-        "on-click": "~/.config/wofi/scripts/wofi-wifi.sh"
-    },
-    "pulseaudio": {
+    "interval": 10,
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󱘖 {capacity}%",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "network": {
+    "format-wifi": "󰤨",
+    "format-ethernet": "󰈁 {ipaddr}",
+    "tooltip-format-wifi": "SSID: {essid}\nIP: {ipaddr}\nFrequency: {frequency}GHz\nStrength: {signalStrength}%",
+    "tooltip-format-ethernet": "IP: {ipaddr}/{cidr}",
+    "format-linked": "󰈂 No IP",
+    "format-disconnected": "󰤭 Disconnected",
+    "format-disabled": "󰤭 Disabled",
+    "on-click": "~/.config/wofi/scripts/wofi-wifi.sh"
+  },
+  "pulseaudio": {
     "format": "{icon}",
     "format-bluetooth": "{icon}",
     "format-muted": "󰝟",
     "format-icons": {
-        "headphone": "󰋋",
-        "hands-free": "󰋎",
-        "headset": "󰋎",
-        "phone": "󰏲",
-        "portable": "󰄝",
-        "car": "󰄋",
-        "default": ["󰕿", "󰖀", "󰕾"]
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎",
+      "phone": "󰏲",
+      "portable": "󰄝",
+      "car": "󰄋",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
     },
     "scroll-step": 5,
     "on-click": "pavucontrol",
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",  // Usa wpctl invece di pactl
-    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",     // Controllo volume con wpctl
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-    "max-volume": 120,                                               // Limita il volume massimo
+    "max-volume": 120,
     "tooltip": true,
     "tooltip-format": "Volume: {volume}%\nDevice: {desc}"
-},
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "󰅶",
-            "deactivated": "󰾪"
-        },
-        "tooltip": true,
-        "tooltip-format-activated": "Keeping screen on",
-        "tooltip-format-deactivated": "Deactivating idle inhibitor",
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰅶",
+      "deactivated": "󰾪"
     },
-    "tray": {
-        "spacing": 5,
-        "icon-size": 20
-    },
-// "custom/performance": {
-//     "exec": "~/.config/wofi/scripts/wofi-tuned-profile.sh",
-//     "return-type": "json",
-//     "interval": 2,
-//     "format": "{}",
-//     "on-click": "~/.config/wofi/scripts/wofi-tuned-profile.sh menu"
-// },
-    "custom/updates": {
-    "format": "{} {icon}",
+    "tooltip": true,
+    "tooltip-format-activated": "Keeping screen on",
+    "tooltip-format-deactivated": "Deactivating idle inhibitor"
+  },
+  "tray": {
+    "spacing": 5,
+    "icon-size": 20
+  },
+  "custom/updates": {
+    "exec": "~/.config/scripts/check-updates.sh --count",
     "return-type": "json",
-    "interval": 2,
+    "interval": 60,
     "format": "{}",
-    "on-click": "~/.config/wofi/scripts/wofi-tuned-profile.sh menu"
-},
-    "custom/updates": {
-        "exec": "~/.config/scripts/check-updates.sh --count",
-        "return-type": "json",
-        "interval": 60,
-        "format": "{}",
-        "tooltip": true,
-        "on-click": "~/.config/hypr/scripts/check-updates.sh --update",
-        "on-click-right": "killall waybar && waybar",
-        "on-click-middle": "dnf list --upgrades | wl-copy",
-        "signal": 8,
-        "max-length": 50,
-        "min-length": 3,
-        "escape": true
+    "tooltip": true,
+    "on-click": "~/.config/hypr/scripts/check-updates.sh --update",
+    "on-click-right": "killall waybar && waybar",
+    "on-click-middle": "dnf list --upgrades | wl-copy",
+    "signal": 8,
+    "max-length": 50,
+    "min-length": 3,
+    "escape": true
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
     },
-    "custom/notification": {
-        "tooltip": false,
-        "format": "{icon}",
-        "format-icons": {
-          "notification": "<span foreground='red'><sup></sup></span>",
-          "none": "",
-          "dnd-notification": "<span foreground='red'><sup></sup></span>",
-          "dnd-none": "",
-          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-          "inhibited-none": "",
-          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-          "dnd-inhibited-none": ""
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
-      }
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  "modules-left": [
+    "niri/workspaces",
+    "niri/window"
+  ],
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9"
+    }
+  },
+  "niri/window": {
+    "max-length": 50
+  }
 }

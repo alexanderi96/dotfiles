@@ -67,6 +67,8 @@ if [ -z "$BASHRCSOURCED" ]; then
   alias startmining='~/mining/startmining.sh'
   alias vim='nvim'
   alias engshell='python ~/workspace/repo/engshell/engshell.py'
+  alias homelab='~/.scripts/homelab'
+  alias hl='~/.scripts/homelab'
   #alias powertop='ssh powertop'
 
 
@@ -95,6 +97,11 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# Avvia Waybar solo se non è già in esecuzione
+if ! pgrep -x waybar > /dev/null; then
+    ~/.config/waybar/start-waybar.sh &
+fi
 
 # SSH keychain
 eval $(keychain --eval --quiet ~/.ssh/id_ed25519_personal)

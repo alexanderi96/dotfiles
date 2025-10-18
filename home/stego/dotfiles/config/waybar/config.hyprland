@@ -1,0 +1,12 @@
+{
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "show-special": true
+    },
+    "hyprland/window": {
+        "max-length": 50
+    }
+}

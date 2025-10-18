@@ -39,6 +39,11 @@ fi
 
 ln -sfv $DIR/config/scripts $CONF_POS
 
+# Link .scripts directory to home
+if get_confirmation "Link .scripts directory to home?"; then
+  ln -sfv $DIR/.scripts $HOME/.scripts
+fi
+
 if get_confirmation "Copy Sway setup?"; then
   ln -sfv $DIR/config/sway $CONF_POS
   ln -sfv $DIR/config/alacritty $CONF_POS
@@ -56,4 +61,14 @@ if get_confirmation "Copy Hypr setup?"; then
   ln -sfv $DIR/config/wlogout $CONF_POS
   ln -sfv $DIR/config/kitty $CONF_POS
   ln -sfv $DIR/config/waypaper $CONF_POS
+fi
+
+if get_confirmation "Copy Niri setup?"; then
+  ln -sfv $DIR/config/niri $CONF_POS
+  ln -sfv $DIR/config/alacritty $CONF_POS
+  ln -sfv $DIR/config/wofi $CONF_POS
+  ln -sfv $DIR/config/wlogout $CONF_POS
+  ln -sfv $DIR/config/waybar $CONF_POS
+  ln -sfv $DIR/config/swaync $CONF_POS
+  ln -sfv $DIR/config/sov $CONF_POS
 fi
