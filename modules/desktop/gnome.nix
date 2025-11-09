@@ -30,6 +30,11 @@
   environment.systemPackages = with pkgs; [
     gnome-tweaks
     gnome-extension-manager
+    
+    # GNOME Extensions
+    gnomeExtensions.vitals
+    gnomeExtensions.caffeine
+    gnomeExtensions.dash-to-dock
   ];
 
   # Remove some default GNOME applications
