@@ -24,6 +24,7 @@
 
     # Productivity
     obsidian
+    firefox
     beeper
 
     # Gaming

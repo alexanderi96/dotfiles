@@ -7,7 +7,7 @@
     ./hardware.nix
     
     # Shared modules
-    ../../modules/desktop/hyprland.nix
+    ../../modules/desktop/gnome.nix
     ../../modules/programs.nix
     ../../modules/services.nix
   ];
@@ -71,6 +71,8 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  hardware.nvidia-container-toolkit.enable = true;
+
   # Hardware acceleration (OpenGL/Vulkan)
   hardware.graphics = {
     enable = true;
@@ -113,7 +115,7 @@
     # GLX vendor library for NVIDIA
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     # GBM backend for NVIDIA
-    GBM_BACKEND = "nvidia-drm";
+    # GBM_BACKEND = "nvidia-drm";
   };
 
   # User account
