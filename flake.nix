@@ -27,6 +27,9 @@
         nixos-hardware.nixosModules.microsoft-surface-pro-intel
         nixos-hardware.nixosModules.microsoft-surface-common
 
+        # Docker module
+        ./modules/docker.nix
+
         # Home Manager integration
         home-manager.nixosModules.home-manager
         {
@@ -43,6 +46,9 @@
       system = system;
       modules = [
         ./hosts/powertop/default.nix
+
+        # Docker module
+        ./modules/docker.nix
 
         # Home Manager integration
         home-manager.nixosModules.home-manager

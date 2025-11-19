@@ -17,11 +17,6 @@
     neovim
     vscode
 
-    # Containerization
-    podman
-    podman-compose
-    distrobox
-
     # Productivity
     obsidian
     firefox
@@ -49,16 +44,5 @@
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
-  # Podman configuration
-  virtualisation = {
-    podman = {
-      enable = true;
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = true;
-      # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.settings.dns_enabled = true;
-    };
   };
 }
