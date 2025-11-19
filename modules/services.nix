@@ -19,7 +19,7 @@
   networking.firewall = {
     enable = true;
     # Allow Tailscale
-    trustedInterfaces = [ "tailscale0" ];
+    trustedInterfaces = [ "tailscale0" "podman+" ];
     allowedUDPPorts = [ config.services.tailscale.port ];
   };
 
