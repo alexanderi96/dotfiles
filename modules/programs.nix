@@ -21,6 +21,7 @@
     podman
     podman-compose
     distrobox
+    pasta
 
     # Productivity
     obsidian
@@ -59,6 +60,8 @@
       dockerCompat = true;
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
+      # Use pasta for better networking performance and external access
+      networkBackend = "pasta";
     };
   };
 }

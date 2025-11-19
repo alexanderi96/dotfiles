@@ -180,24 +180,16 @@
     "escape": true
   },
   "modules-left": [
-    "niri/workspaces",
-    "niri/window"
+    "hyprland/workspaces",
+    "hyprland/window"
   ],
-  "niri/workspaces": {
+  "hyprland/workspaces": {
     "format": "{icon}",
-    "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9"
-    }
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "show-special": true
   },
-  "niri/window": {
+  "hyprland/window": {
     "max-length": 50
   }
 }

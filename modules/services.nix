@@ -19,7 +19,7 @@
   networking.firewall = {
     enable = true;
     # Allow Tailscale
-    trustedInterfaces = [ "tailscale0" "podman+" ];
+    trustedInterfaces = [ "tailscale0" ];
     allowedUDPPorts = [ config.services.tailscale.port ];
   };
 
@@ -39,4 +39,3 @@
     package = pkgs.mlocate;
   };
 }
-
