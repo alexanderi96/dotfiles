@@ -64,10 +64,6 @@
   xdg.configFile."waybar" = {
     source = ./dotfiles/config/waybar;
     recursive = true;
-    # Make start-waybar.sh executable
-    onChange = ''
-      chmod +x ${config.xdg.configHome}/waybar/start-waybar.sh
-    '';
   };
 
   # Kitty terminal configuration
@@ -104,10 +100,6 @@
   xdg.configFile."wofi" = {
     source = ./dotfiles/config/wofi;
     recursive = true;
-    # Make scripts executable
-    onChange = ''
-      find ${config.xdg.configHome}/wofi/scripts -type f -name "*.sh" -exec chmod +x {} \;
-    '';
   };
 
   # Alacritty terminal configuration
@@ -126,10 +118,6 @@
   xdg.configFile."scripts" = {
     source = ./dotfiles/config/scripts;
     recursive = true;
-    # Make all scripts executable
-    onChange = ''
-      find ${config.xdg.configHome}/scripts -type f -name "*.sh" -exec chmod +x {} \;
-    '';
   };
 
   # Neovim configuration
