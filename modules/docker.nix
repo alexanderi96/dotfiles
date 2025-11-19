@@ -33,13 +33,4 @@
 
   # Docker group configuration
   users.groups.docker = {};
-
-  # VSCode Docker extension integration
-  programs.vscode = {
-    profiles.default = {
-      extensions = with pkgs.vscode-extensions; [
-        ms-azuretools.vscode-docker
-      ];
-    };
-  };
 }
