@@ -122,7 +122,7 @@
   users.users.stego = {
     isNormalUser = true;
     description = "Alessandro Ianne";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   # System state version

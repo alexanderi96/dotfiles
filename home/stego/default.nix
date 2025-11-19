@@ -11,7 +11,6 @@
   # User information
   home.username = "stego";
   home.homeDirectory = "/home/stego";
-  home.extraGroups = [ "docker" ];
 
   # User packages
   home.packages = with pkgs; [
