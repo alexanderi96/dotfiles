@@ -19,6 +19,16 @@
       enable = true;
       dates = "weekly";
     };
+    extraOptions = ''
+      {
+        "runtimes": {
+          "nvidia": {
+            "path": "${pkgs.nvidiaPackages.nvidia-container-runtime}/bin/nvidia-container-runtime",
+            "runtimeArgs": []
+          }
+        }
+      }
+    '';
   };
 
   # Open firewall ports for Docker
