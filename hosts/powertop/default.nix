@@ -10,6 +10,7 @@
     ../../modules/desktop/gnome.nix
     ../../modules/programs.nix
     ../../modules/services.nix
+    ../../modules/docker.nix
   ];
 
   # Bootloader
