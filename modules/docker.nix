@@ -15,20 +15,11 @@
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
+    enableNvidia = true;
     autoPrune = {
       enable = true;
       dates = "weekly";
     };
-   extraOptions = ''
-  {
-    "runtimes": {
-      "nvidia": {
-        "path": "${pkgs.linuxPackages.nvidia_x11.nvidia-container-runtime}/bin/nvidia-container-runtime",
-        "runtimeArgs": []
-      }
-    }
-  }
-'';
   };
 
   # Open firewall ports for Docker
