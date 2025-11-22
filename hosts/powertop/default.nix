@@ -57,7 +57,7 @@
     modesetting.enable = true;
 
     # Power management (disabled for VM stability)
-    powerManagement.enable = false;
+    powerManagement.enable = true;
     powerManagement.finegrained = false;
 
     # Use proprietary driver (open-source not supported for GTX 1070 Ti)
