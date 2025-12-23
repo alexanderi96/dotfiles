@@ -37,6 +37,8 @@
     tree
     unzip
     zip
+    parted
+    aria2
   ];
 
   # Steam configuration

@@ -1,36 +1,46 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # Containerization packages
-  environment.systemPackages = with pkgs; [
-    docker
-    docker-compose
-    distrobox
-  ];
-
-  # Docker daemon configuration
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = true;
-    autoPrune = {
-      enable = true;
-      dates = "weekly";
-    };
+  options.docker.enableNvidiaRuntime = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+    description = "Enable NVIDIA support for Docker containers on this host.";
   };
 
-  # Open firewall ports for Docker
-  networking.firewall.allowedTCPPorts = [
-    2376 # Docker daemon TLS
-    2375 # Docker daemon (unsecured)
-  ];
+  config = {
+    # System packages
+    environment.systemPackages = with pkgs; [
+      docker
+      docker-compose
+      distrobox
+    ];
 
-  networking.firewall.allowedUDPPorts = [
-    2376 # Docker daemon TLS
-  ];
+    # Docker configuration
+    virtualisation.docker = {
+      enable = true;
+      enableOnBoot = true;
+      
+      # Auto-prune configuration
+      autoPrune = {
+        enable = true;
+        dates = "weekly";
+      };
 
-  # Docker group configuration
-  users.groups.docker = {};
+      # Daemon settings
+      daemon.settings = {
+        # Enable CDI (Container Device Interface) for NVIDIA GPU support
+        # This is required on NixOS 25.05+ as the old nvidia runtime is deprecated
+        features = lib.mkIf config.docker.enableNvidiaRuntime {
+          cdi = true;
+        };
+      };
+    };
+
+    # Enable NVIDIA Container Toolkit when GPU support is requested
+    # This generates the CDI specifications in /var/run/cdi/
+    hardware.nvidia-container-toolkit.enable = config.docker.enableNvidiaRuntime;
+
+    # Docker group
+    users.groups.docker = {};
+  };
 }

@@ -29,10 +29,18 @@
       fsType = "ext4";
     };
 
+#  fileSystems."/mnt/old-data" =
+#    { device = "/dev/disk/by-uuid/e77e106d-2aeb-46b1-942d-a547559f5901";
+#      fsType = "ext4";
+#    };
+
   fileSystems."/mnt/Storage" =
-    { device = "/dev/disk/by-uuid/e77e106d-2aeb-46b1-942d-a547559f5901";
+    {
+      device = "/dev/disk/by-uuid/b5a3a195-fc1e-4b81-9d5a-cada81a7f312";
       fsType = "ext4";
+      options = [ "noatime" "commit=60" ];
     };
+
 
   swapDevices = [ ];
 

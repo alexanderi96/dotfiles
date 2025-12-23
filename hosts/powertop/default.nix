@@ -72,7 +72,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  hardware.nvidia-container-toolkit.enable = true;
+#  hardware.nvidia-container-toolkit.enable = true;
 
   # Hardware acceleration (OpenGL/Vulkan)
   hardware.graphics = {
@@ -118,6 +118,9 @@
     # GBM backend for NVIDIA
     # GBM_BACKEND = "nvidia-drm";
   };
+
+  # Docker NVIDIA runtime abilitato solo su questo host
+  docker.enableNvidiaRuntime = true;
 
   # User account
   users.users.stego = {
