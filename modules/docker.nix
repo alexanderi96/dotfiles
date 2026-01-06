@@ -1,46 +1,54 @@
 { config, pkgs, lib, ... }:
 
 {
-  options.docker.enableNvidiaRuntime = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
-    description = "Enable NVIDIA support for Docker containers on this host.";
-  };
+  options.docker.enableNvidia = lib.mkEnableOption "Enable NVIDIA CDI support for Docker";
 
   config = {
-    # System packages
     environment.systemPackages = with pkgs; [
       docker
       docker-compose
       distrobox
     ];
 
-    # Docker configuration
     virtualisation.docker = {
       enable = true;
       enableOnBoot = true;
-      
-      # Auto-prune configuration
+
+      # Docker >= 25 is REQUIRED for proper CDI support
+      package = pkgs.docker_25;
+
       autoPrune = {
         enable = true;
         dates = "weekly";
       };
 
-      # Daemon settings
-      daemon.settings = {
-        # Enable CDI (Container Device Interface) for NVIDIA GPU support
-        # This is required on NixOS 25.05+ as the old nvidia runtime is deprecated
-        features = lib.mkIf config.docker.enableNvidiaRuntime {
-          cdi = true;
-        };
+      # CRITICAL: Enable CDI for GPU passthrough
+      daemon.settings = lib.mkIf config.docker.enableNvidia {
+        features.cdi = true;
       };
     };
 
-    # Enable NVIDIA Container Toolkit when GPU support is requested
-    # This generates the CDI specifications in /var/run/cdi/
-    hardware.nvidia-container-toolkit.enable = config.docker.enableNvidiaRuntime;
+    # Enable NVIDIA Container Toolkit
+    hardware.nvidia-container-toolkit.enable = config.docker.enableNvidia;
 
-    # Docker group
+    # Ensure CDI directory exists
+    systemd.tmpfiles.rules = lib.mkIf config.docker.enableNvidia [
+      "d /etc/cdi 0755 root root -"
+    ];
+
+    # Service to generate CDI specs (REQUIRED!)
+    systemd.services.nvidia-cdi-generator = lib.mkIf config.docker.enableNvidia {
+      description = "Generate NVIDIA CDI specifications";
+      wantedBy = [ "multi-user.target" ];
+      after = [ "nvidia-persistenced.service" ];
+      
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        ExecStart = "${pkgs.nvidia-container-toolkit}/bin/nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml";
+      };
+    };
+
     users.groups.docker = {};
   };
 }

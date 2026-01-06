@@ -20,7 +20,18 @@
     enable = true;
     # Allow Tailscale
     trustedInterfaces = [ "tailscale0" ];
-    allowedUDPPorts = [ config.services.tailscale.port ];
+
+    # 2377: Cluster management
+    # 7946: Communication among nodes
+    allowedTCPPorts = [ 2377 7946 11434 8000 ];
+    
+    # 7946: Communication among nodes
+    # 4789: Overlay Network Traffic (FONDAMENTALE per vedere Ollama)
+    allowedUDPPorts = [ 
+      config.services.tailscale.port 
+      7946 
+      4789 
+    ];
   };
 
   # Enable automatic garbage collection
@@ -37,5 +48,13 @@
   services.locate = {
     enable = true;
     package = pkgs.mlocate;
+  };
+
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+    
   };
 }
