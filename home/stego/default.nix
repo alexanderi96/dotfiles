@@ -22,7 +22,7 @@
     neovim
     
     # System utilities
-    btop
+    (btop.override { cudaSupport = true; })
     fd
     ripgrep
     fzf
