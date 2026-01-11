@@ -5,7 +5,8 @@
     ./programs/vscode.nix
     ./programs/direnv.nix
     ./programs/vicinae.nix
-    # ./desktop.nix  # Modulo creato precedentemente per la parte Hyprland
+    ./config.nix
+    # ./hyprland.nix  # Modulo creato precedentemente per la parte Hyprland
   ];
 
   home.username = "stego";

@@ -67,10 +67,6 @@ if [ -z "$BASHRCSOURCED" ]; then
   alias startmining='~/mining/startmining.sh'
   alias vim='nvim'
   alias engshell='python ~/workspace/repo/engshell/engshell.py'
-  alias homelab='~/.scripts/homelab'
-  alias hl='~/.scripts/homelab'
-  #alias powertop='ssh powertop'
-
 
   alias goland='~/.local/share/JetBrains/Toolbox/apps/goland/bin/goland -Dawt.toolkit.name=WLToolkit'
 

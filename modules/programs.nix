@@ -42,5 +42,7 @@
     vulkan-tools
     vulkan-loader
     imagemagick
+
+    opencode
   ];
 }
