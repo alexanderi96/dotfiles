@@ -3,12 +3,12 @@
 {
   imports = [
     ./hardware.nix
-    ../../modules/hardware/nvidia-1070ti.nix # Spostato qui
+    ../../modules/hardware/amd-7900xtx.nix # Spostato qui
     ../../modules/programs.nix
     ../../modules/services.nix
     ../../modules/docker.nix
     # NOTA: GNOME e Hyprland sono commentati/rimossi per risparmiare risorse
-    ../../modules/desktop/gnome.nix
+    # ../../modules/desktop/gnome.nix
   ];
 
   networking.hostName = "powertop";

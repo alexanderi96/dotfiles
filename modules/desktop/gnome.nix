@@ -23,9 +23,6 @@
     #jack.enable = true;
   };
 
-  # Install firefox
-  programs.firefox.enable = true;
-
   # GNOME-specific packages
   environment.systemPackages = with pkgs; [
     gnome-tweaks
