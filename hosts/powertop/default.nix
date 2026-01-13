@@ -31,7 +31,7 @@
   users.users.stego = {
     isNormalUser = true;
     description = "Alessandro Ianne";
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "video" "render" ];
   };
 
   system.stateVersion = "25.05";

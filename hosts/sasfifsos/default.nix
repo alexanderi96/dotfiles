@@ -50,7 +50,7 @@
   users.users.stego = {
     isNormalUser = true;
     description = "Alessandro Ianne";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "video" "render" ];
   };
 
   # System state version

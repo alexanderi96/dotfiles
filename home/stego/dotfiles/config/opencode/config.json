@@ -1,15 +1,50 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "searxng": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@jharding_npm/mcp-server-searxng"
+      ],
+      "environment": {
+        "SEARXNG_INSTANCES": "https://searx.stegolab.duckdns.org/"
+      },
+      "enabled": true
+    },
+    "context7": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "ctx7sk-48f8ee36-10d5-4e1a-a16e-2a8255ee46b5"
+      ],
+      "enabled": true
+    },
+    "gh_grep": {
+      "type": "remote",
+      "url": "https://mcp.grep.app"
+    }
+  },
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Ollama (local)",
       "options": {
-        "baseURL": "http://localhost:11434/v1"
+        "baseURL": "http://ollama.stegolab.duckdns.org/v1"
       },
       "models": {
-        "qwen3:8b": {
-          "name": "Qwen 3 (8B)"
+        "qwen3-32k:latest": {
+          "name": "Qwen 3 (32k, 8B)"
+        },
+        "qwen3-8b-16k:latest": {
+          "name": "qwen3-8b-16k:latest (good for  1070ti)"
+        },
+        "hf.co/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_XL": {
+          "name": "Unsloth Qwen3 Coder 30B instruct GGUF Q4"
         }
       }
     }

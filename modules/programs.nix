@@ -21,7 +21,10 @@
     vim
     
     # === System Utilities (Spostate da Home Manager) ===
-    (btop.override { cudaSupport = true; })
+    (btop.override { rocmSupport = true; })
+    
+    rocmPackages.rocm-smi
+
     htop
     fd
     ripgrep
@@ -43,6 +46,6 @@
     vulkan-loader
     imagemagick
 
-    opencode
+    # opencode
   ];
 }
