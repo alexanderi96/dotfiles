@@ -8,7 +8,7 @@
     ../../modules/services.nix
     ../../modules/docker.nix
     # NOTA: GNOME e Hyprland sono commentati/rimossi per risparmiare risorse
-    # ../../modules/desktop/gnome.nix
+    ../../modules/desktop/gnome.nix
   ];
 
   networking.hostName = "powertop";

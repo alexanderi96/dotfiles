@@ -29,6 +29,11 @@
       rocmPackages.clr
       rocmPackages.clr.icd
       amdvlk
+      # --- AGGIUNGI QUESTI PER SUNSHINE ---
+      libva
+      libva-utils
+      vaapiVdpau
+      libvdpau-va-gl
     ];
   };
 

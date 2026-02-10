@@ -16,6 +16,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    nfs-utils
+
     # === Core Editors ===
     neovim
     vim
@@ -40,6 +42,7 @@
     unzip
     zip
     aria2
+    screenfetch
     
     # === GPU/Terminal Tools ===
     vulkan-tools
