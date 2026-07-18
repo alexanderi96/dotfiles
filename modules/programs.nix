@@ -49,6 +49,6 @@
     vulkan-loader
     imagemagick
 
-    # opencode
+    oversteer
   ];
 }

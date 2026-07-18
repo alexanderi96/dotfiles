@@ -31,6 +31,7 @@
     # Shell enhancements (configurazioni puramente utente)
     mcfly
     thefuck
+    opencode
   ];
 
   # ============================================================================
