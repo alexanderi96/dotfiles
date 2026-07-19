@@ -35,8 +35,11 @@
     options = [
       "nfsvers=4.2"           # Forza l'uso della versione 4.2 (supportata da OMV)
       "nofail"                # Non blocca il boot
-      "soft"                  # Evita il freeze del sistema se il NAS cade
-      "intr"                  # Permette di interrompere i processi in attesa sul disco
+      # 2026-07-19: era "soft", ma un timeout in scrittura ha lasciato un folio
+      # lockato orfano (cp in D-state, READDIR bloccate, reboot forzato).
+      # Con "hard" il client ritenta finché il NAS torna, senza corrompere lo stato.
+      # ("intr" rimosso: è un no-op dal kernel 2.6.25)
+      "hard"
       "x-systemd.automount"   # Monta al primo accesso
       "x-systemd.idle-timeout=600" # Aumentato a 10 minuti (60s è troppo aggressivo per l'uso quotidiano)
       "x-systemd.device-timeout=5s"

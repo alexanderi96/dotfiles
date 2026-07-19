@@ -20,9 +20,6 @@
     virtualisation.docker = {
       enable = true;
       enableOnBoot = true;
-      
-      # Docker >= 25 necessario per CDI (NVIDIA)
-      package = pkgs.docker_25;
 
       autoPrune = {
         enable = true;

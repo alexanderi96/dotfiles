@@ -2,14 +2,13 @@
   description = "My NixOS + Home Manager setup";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.05";
+    nixpkgs.url = "nixpkgs/nixos-26.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     vicinae.url = "github:vicinaehq/vicinae";
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = { self, nixpkgs, nixos-hardware, home-manager, vicinae, ... }: 

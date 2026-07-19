@@ -20,22 +20,15 @@
     extraPackages = with pkgs; [
       rocmPackages.clr
       rocmPackages.clr.icd
-      amdvlk
       libva
       libva-utils
-      vaapiVdpau
+      libva-vdpau-driver
       libvdpau-va-gl
     ];
   };
   hardware.amdgpu.initrd.enable = true;
 
-  # === 4. COMPUTE ENVIRONMENT ===
-  environment.sessionVariables = {
-    HSA_OVERRIDE_GFX_VERSION = "11.0.0";
-    AMD_LOG_LEVEL = "3";
-  };
-
-  # === 5. POWER MANAGEMENT ===
+  # === 4. POWER MANAGEMENT ===
   # Nota: pp_od_clk_voltage non è disponibile via VFIO passthrough,
   # l'undervolt via sysfs non è possibile in questo setup.
   # Il power cap è limitato dal VBIOS a un range 305W–350W (default 339W).

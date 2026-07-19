@@ -25,7 +25,7 @@
     # Sunshine Game Streaming
     sunshine = {
       enable = true;
-      autoStart = true;
+      autoStart = false;  # avviare a mano solo quando serve lo streaming
       capSysAdmin = true;
       openFirewall = true;
     };
@@ -44,12 +44,11 @@
     allowedTCPPorts = [ 
       2377 
       7946 
-      11434 # Ollama
-      8000 
+      8000
       ### MONITORING PORTS ###
       9100  # Node Exporter
       9080  # Radeon Exporter (AMD GPU Light)
-      8080  # cAdvisor
+      8080  # llama-server (ex cAdvisor)
     ];
     
     # UDP Ports

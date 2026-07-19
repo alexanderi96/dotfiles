@@ -1,13 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  # huggingface-hub >= 1.0: CLI `hf` (+ shim `huggingface-cli`) e backend Xet.
-  # Il canale 25.05 e' fermo a 0.30.2 — pin chirurgico su uno snapshot nixos-unstable.
-  nixpkgsHf = import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/61b7c44c4073f0b827768aff0049561b5110ea5a.tar.gz";
-    sha256 = "1knbr9j7szzlppbp0r9rby06nml7b45vqhmskgycfbcnr1nanqnp";
-  }) { system = pkgs.stdenv.hostPlatform.system; };
-in
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -24,7 +16,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    nixpkgsHf.python3Packages.huggingface-hub  # 1.10.2: `hf` + shim `huggingface-cli`
+    python3Packages.huggingface-hub  # CLI `hf` (lo shim `huggingface-cli` in 1.x è uno stub)
     nfs-utils
 
     # === Core Editors ===
