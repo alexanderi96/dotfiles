@@ -27,9 +27,9 @@ cd /mnt/etc/nixos/nix
 nixos-generate-config --root /mnt --dir /mnt/etc/nixos/nix/hosts/sasfifsos/
 mv /mnt/etc/nixos/nix/hosts/sasfifsos/hardware-configuration.nix /mnt/etc/nixos/nix/hosts/sasfifsos/hardware.nix
 
-# Per Desktop (powertop)
-nixos-generate-config --root /mnt --dir /mnt/etc/nixos/nix/hosts/powertop/
-mv /mnt/etc/nixos/nix/hosts/powertop/hardware-configuration.nix /mnt/etc/nixos/nix/hosts/powertop/hardware.nix
+# Per Desktop (delfi)
+nixos-generate-config --root /mnt --dir /mnt/etc/nixos/nix/hosts/delfi/
+mv /mnt/etc/nixos/nix/hosts/delfi/hardware-configuration.nix /mnt/etc/nixos/nix/hosts/delfi/hardware.nix
 ```
 
 4. **Installare il sistema**:
@@ -38,7 +38,7 @@ mv /mnt/etc/nixos/nix/hosts/powertop/hardware-configuration.nix /mnt/etc/nixos/n
 nixos-install --flake /mnt/etc/nixos/nix#sasfifsos
 
 # Per Desktop
-nixos-install --flake /mnt/etc/nixos/nix#powertop
+nixos-install --flake /mnt/etc/nixos/nix#delfi
 ```
 
 ### Opzione 2: Su sistema NixOS esistente
@@ -69,7 +69,7 @@ nix/
 │   ├── sasfifsos/              # Surface Pro
 │   │   ├── default.nix         # Configurazione host
 │   │   └── hardware.nix        # Hardware Surface Pro
-│   └── powertop/               # Desktop fisso
+│   └── delfi/                  # VM NixOS inferenza (VM 101)
 │       ├── default.nix         # Configurazione host
 │       └── hardware.nix        # Hardware desktop (template)
 ├── modules/                    # Moduli condivisi
@@ -90,7 +90,7 @@ nix/
 sudo nixos-rebuild switch --flake .#sasfifsos
 
 # Desktop
-sudo nixos-rebuild switch --flake .#powertop
+sudo nixos-rebuild switch --flake .#delfi
 ```
 
 ### Aggiornare il flake (sistema)

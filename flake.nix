@@ -42,10 +42,10 @@
     };
 
     # Desktop configuration
-    nixosConfigurations.powertop = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.delfi = nixpkgs.lib.nixosSystem {
       system = system;
       modules = [
-        ./hosts/powertop/default.nix
+        ./hosts/delfi/default.nix
 
         # Docker module
         ./modules/docker.nix
