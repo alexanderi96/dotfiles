@@ -1,0 +1,14 @@
+// DMS Window Rules - Managed by DankMaterialShell
+// Do not edit manually - changes may be overwritten
+
+// @id=wr_1779997941376785377 @name=org.mozilla.firefox
+window-rule {
+    match app-id="^org.mozilla.firefox$"
+    open-floating true
+}
+
+// @id=wr_1780162812187092402 @name=kitty
+window-rule {
+    match app-id="^kitty$"
+    open-maximized true
+}

@@ -17,12 +17,14 @@
       goland = "~/.local/share/JetBrains/Toolbox/apps/goland/bin/goland -Dawt.toolkit.name=WLToolkit";
       # vscode parte in xwayland anche se supporta wayland: forza ozone
       code = "ELECTRON_OZONE_PLATFORM_HINT=auto code";
+      vault = ''cd "$VAULT_PATH"'';
     };
 
     sessionVariables = {
       GOPATH = "$HOME/go";
       BUN_INSTALL = "$HOME/.bun";
       NVM_DIR = "$HOME/.nvm";
+      VAULT_PATH = "$HOME/workspace/myrepo/memory_vault";
     };
 
     initExtra = ''

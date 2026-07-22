@@ -1,1 +1,4 @@
 .env
+.aider*
+*.backup.*
+*.sync-conflict-*

@@ -61,6 +61,14 @@
       ];
     };
 
+    # thickpad: Home Manager STANDALONE su Fedora (nessun host NixOS, nessun reinstall).
+    # Applica con: home-manager switch --flake .#thickpad
+    homeConfigurations.thickpad = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+      extraSpecialArgs = { inherit vicinae; };
+      modules = [ ./home/stego/thickpad.nix ];
+    };
+
     # DevShell globale
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = [
